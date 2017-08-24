@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>bundleid</key>
+  <string>com.github.jsumners.alfred-emoji</string>
+  <key>category</key>
+  <string>Tools</string>
+  <key>connections</key>
+  <dict>
+    <key>05450F7C-3D4F-45BF-ACA3-9422EF54EFDD</key>
+    <array>
+      <dict>
+        <key>destinationuid</key>
+        <string>5A54554C-598A-41C6-B0D9-62046CEFB1AD</string>
+        <key>modifiers</key>
+        <integer>0</integer>
+        <key>modifiersubtext</key>
+        <string></string>
+        <key>vitoclose</key>
+        <false/>
+      </dict>
+    </array>
+  </dict>
+  <key>createdby</key>
+  <string>James Sumners</string>
+  <key>description</key>
+  <string>Copy emoji to the clipboard</string>
+  <key>disabled</key>
+  <false/>
+  <key>name</key>
+  <string>Emoji search</string>
+  <key>objects</key>
+  <array>
+    <dict>
+      <key>config</key>
+      <dict>
+        <key>alfredfiltersresults</key>
+        <false/>
+        <key>argumenttype</key>
+        <integer>1</integer>
+        <key>escaping</key>
+        <integer>102</integer>
+        <key>keyword</key>
+        <string>emoji</string>
+        <key>queuedelaycustom</key>
+        <integer>3</integer>
+        <key>queuedelayimmediatelyinitially</key>
+        <true/>
+        <key>queuedelaymode</key>
+        <integer>0</integer>
+        <key>queuemode</key>
+        <integer>1</integer>
+        <key>runningsubtext</key>
+        <string>Loading results...</string>
+        <key>script</key>
+        <string>query=$1
+
+./node emoji.js $query</string>
+        <key>scriptargtype</key>
+        <integer>1</integer>
+        <key>scriptfile</key>
+        <string></string>
+        <key>subtext</key>
+        <string></string>
+        <key>title</key>
+        <string>Seach emoji</string>
+        <key>type</key>
+        <integer>0</integer>
+        <key>withspace</key>
+        <true/>
+      </dict>
+      <key>type</key>
+      <string>alfred.workflow.input.scriptfilter</string>
+      <key>uid</key>
+      <string>05450F7C-3D4F-45BF-ACA3-9422EF54EFDD</string>
+      <key>version</key>
+      <integer>2</integer>
+    </dict>
+    <dict>
+      <key>config</key>
+      <dict>
+        <key>autopaste</key>
+        <false/>
+        <key>clipboardtext</key>
+        <string>{query}</string>
+        <key>transient</key>
+        <false/>
+      </dict>
+      <key>type</key>
+      <string>alfred.workflow.output.clipboard</string>
+      <key>uid</key>
+      <string>5A54554C-598A-41C6-B0D9-62046CEFB1AD</string>
+      <key>version</key>
+      <integer>2</integer>
+    </dict>
+  </array>
+  <key>readme</key>
+  <string>Type an emoji name, or alias, to find it and copy it.</string>
+  <key>uidata</key>
+  <dict>
+    <key>05450F7C-3D4F-45BF-ACA3-9422EF54EFDD</key>
+    <dict>
+      <key>xpos</key>
+      <integer>100</integer>
+      <key>ypos</key>
+      <integer>180</integer>
+    </dict>
+    <key>5A54554C-598A-41C6-B0D9-62046CEFB1AD</key>
+    <dict>
+      <key>xpos</key>
+      <integer>490</integer>
+      <key>ypos</key>
+      <integer>300</integer>
+    </dict>
+  </dict>
+  <key>version</key>
+  <string>{{version}}</string>
+  <key>webaddress</key>
+  <string>https://github.com/jsumners/alfred-emoji</string>
+</dict>
+</plist>
