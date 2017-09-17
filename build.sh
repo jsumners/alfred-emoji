@@ -12,6 +12,7 @@ cd ${PWD}
 cd output
 
 cp ${parentDir}/src/emoji.js .
+cp ${parentDir}/src/search.js .
 cp ${parentDir}/src/info.plist.xml ./info.plist
 
 echo "Installing emojilib ..."

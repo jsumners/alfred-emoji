@@ -1,14 +1,23 @@
 {
   "version": "1.0.0",
   "scripts": {
-    "build": "./build.sh"
+    "build": "./build.sh",
+    "test": "tap 'test/**/*.test.js'",
+    "lint": "standard | snazzy"
   },
+  "precommit": [
+    "lint",
+    "test"
+  ],
   "dependencies": {
     "emojilib": "^2.2.8",
     "fontkit": "^1.7.7",
     "semver": "^5.4.1"
   },
   "devDependencies": {
-    "standard": "^10.0.3"
+    "pre-commit": "^1.2.2",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.3",
+    "tap": "^10.7.2"
   }
 }
