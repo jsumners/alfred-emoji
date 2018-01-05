@@ -35,6 +35,10 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
+# NPM lock files
+package-lock.json
+yarn.lock
+
 # 0x
 .__browserify_string_empty.js
 profile-*
