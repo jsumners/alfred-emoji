@@ -15,7 +15,7 @@ test('finds "thu" partial', (t) => {
   t.ok(Object.keys(found.items).length > 4)
 })
 
-test('finds "vomit"', (t) => {
+test('finds "vomit" keyword', (t) => {
   t.plan(1)
   const found = search('vomit')
   t.ok(Object.keys(found.items).length > 0)
