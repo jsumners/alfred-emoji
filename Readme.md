@@ -10,6 +10,8 @@ seems to be unmaintained (some emoji don't copy and some newer are missing).
 Whereas his project is based on the Ruby language, this one is based on
 JavaScript using [Node.js][node].
 
+![screenshot](images/screenshot.png)
+
 ## Installing the Workflow
 
 [Download the provided Alfred workflow][releases].
