@@ -38,3 +38,11 @@ test('enables alt-modifier', (t) => {
   const found = search('hear_no_evil')
   t.ok(found.items[0].mods.alt.arg === ':hear_no_evil:')
 })
+
+test('unique results', (t) => {
+  t.plan(1)
+  const found = search('smile')
+  const names = found.items.map(item => item.title)
+  const set = new Set(names)
+  t.ok(names.length === set.size)
+})
