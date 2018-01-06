@@ -1,5 +1,6 @@
 output/
 *.alfredworkflow
+*.sig
 
 # Logs
 logs
