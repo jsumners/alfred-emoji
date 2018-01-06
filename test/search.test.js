@@ -26,3 +26,9 @@ test('omits "rage1"', (t) => {
   const found = search('rage1')
   t.ok(Object.keys(found.items).length === 0)
 })
+
+test('enables autocomplete', (t) => {
+  t.plan(1)
+  const found = search('think')
+  t.ok(found.items[0].autocomplete === 'thinking')
+})

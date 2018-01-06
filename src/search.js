@@ -12,6 +12,7 @@ const formattedResults = (names) => {
       title: name,
       subtitle: `Copy "${emoji}" (${name}) to clipboard`,
       arg: emoji,
+      autocomplete: name,
       icon: { path: `./icons/${name}.png` }
     })
   })
