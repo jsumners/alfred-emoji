@@ -1,5 +1,7 @@
 # alfred-emoji
 
+[![Build Status](https://travis-ci.org/jsumners/alfred-emoji.svg?branch=master)](https://travis-ci.org/jsumners/alfred-emoji)
+
 This project builds an [Alfred workflow][alfred] that makes it easy to search
 for emoji and copy them to the clipboard 🤘.
 
