@@ -2,6 +2,7 @@
   "version": "1.0.3",
   "scripts": {
     "build": "./build.sh",
+    "load": "npm run build && open alfred-emoji.alfredworkflow",
     "test": "tap 'test/**/*.test.js'",
     "lint": "standard | snazzy"
   },
