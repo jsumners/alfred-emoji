@@ -46,8 +46,8 @@ module.exports = function search (query) {
 
   const searchTerm = query.replace(/[:\s]/g, '') // :thumbs up: => thumbsup
 
-  let names = matchingName(searchTerm)
-      .concat(matchingAlias(searchTerm))
+  const names = matchingName(searchTerm)
+        .concat(matchingAlias(searchTerm))
 
   return alfredItems(new Set(names))
 }
