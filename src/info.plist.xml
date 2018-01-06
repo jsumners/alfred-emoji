@@ -54,9 +54,9 @@
         <key>runningsubtext</key>
         <string>Loading results...</string>
         <key>script</key>
-        <string>query=$1
+        <string>query=$*
 
-./node emoji.js $query</string>
+./node emoji.js "$query"</string>
         <key>scriptargtype</key>
         <integer>1</integer>
         <key>scriptfile</key>
