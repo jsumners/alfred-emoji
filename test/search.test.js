@@ -20,3 +20,9 @@ test('finds "vomit"', (t) => {
   const found = search('vomit')
   t.ok(Object.keys(found.items).length > 0)
 })
+
+test('omits "rage1"', (t) => {
+  t.plan(1)
+  const found = search('rage1')
+  t.ok(Object.keys(found.items).length === 0)
+})
