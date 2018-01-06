@@ -18,6 +18,18 @@ workflow instead of trusting the [provided binary][releases].
 [node]: https://nodejs.org/
 [releases]: https://github.com/jsumners/alfred-emoji/releases
 
+## Usage
+
+```
+emoji [query]
+```
+
+Press <kbd>enter</kbd>: the **symbol** of the selected emoji (e.g. 🤣)
+will be copied to your clipboard.
+
+Press <kbd>alt</kbd>+<kbd>enter</kbd>: the **code** of the selected
+emoji (e.g. `:rofl:`) will be copied to your clipboard.
+
 ## Building The Workflow
 
 1. Clone this repository
