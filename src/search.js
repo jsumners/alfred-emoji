@@ -5,6 +5,7 @@ const emojiNames = emojilib.ordered
 
 const alfredItem = (emoji, name) => {
   return {
+    uid: name,
     title: name,
     subtitle: `Copy "${emoji}" (${name}) to clipboard`,
     arg: emoji,
