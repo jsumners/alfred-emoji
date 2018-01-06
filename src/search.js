@@ -8,6 +8,7 @@ module.exports = function search (searchTerm) {
     const results = []
     emojiNames.forEach((name) => {
       const emoji = emojilib.lib[name].char
+      if (!emoji) return
       results.push({
         title: emoji,
         subtitle: `Copy "${emoji}" (${name}) to clipboard`,
@@ -29,6 +30,7 @@ module.exports = function search (searchTerm) {
     const results = []
     nameResults.forEach((name) => {
       const emoji = emojilib.lib[name].char
+      if (!emoji) return
       results.push({
         title: name,
         subtitle: `Copy "${emoji}" (${name}) to clipboard`,
@@ -50,6 +52,7 @@ module.exports = function search (searchTerm) {
   const results = []
   aliasResults.forEach((obj) => {
     const emoji = obj.char
+    if (!emoji) return
     results.push({
       title: obj._name,
       subtitle: `Copy "${emoji}" (${obj._name}) to clipboard`,
