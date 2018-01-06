@@ -32,3 +32,9 @@ test('enables autocomplete', (t) => {
   const found = search('think')
   t.ok(found.items[0].autocomplete === 'thinking')
 })
+
+test('enables alt-modifier', (t) => {
+  t.plan(1)
+  const found = search('hear_no_evil')
+  t.ok(found.items[0].mods.alt.arg === ':hear_no_evil:')
+})
