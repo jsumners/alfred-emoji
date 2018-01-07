@@ -1,7 +1,7 @@
 'use strict'
 
 const search = require('./search')
-const searchTerm = process.argv[2]
+const query = process.argv[2]
 
-const found = search(searchTerm)
+const found = search(query)
 console.log('%j', found)
