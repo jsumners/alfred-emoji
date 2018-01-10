@@ -12,6 +12,16 @@
     <array>
       <dict>
         <key>destinationuid</key>
+        <string>AEDE6F2A-3933-4CB6-9F5B-0D53DDFE79BA</string>
+        <key>modifiers</key>
+        <integer>1048576</integer>
+        <key>modifiersubtext</key>
+        <string>Paste {query} into frontmost application</string>
+        <key>vitoclose</key>
+        <false/>
+      </dict>
+      <dict>
+        <key>destinationuid</key>
         <string>5A54554C-598A-41C6-B0D9-62046CEFB1AD</string>
         <key>modifiers</key>
         <integer>0</integer>
@@ -35,8 +45,29 @@
     <dict>
       <key>config</key>
       <dict>
+        <key>autopaste</key>
+        <true/>
+        <key>clipboardtext</key>
+        <string>{query}</string>
+        <key>transient</key>
+        <true/>
+      </dict>
+      <key>type</key>
+      <string>alfred.workflow.output.clipboard</string>
+      <key>uid</key>
+      <string>AEDE6F2A-3933-4CB6-9F5B-0D53DDFE79BA</string>
+      <key>version</key>
+      <integer>2</integer>
+    </dict>
+    <dict>
+      <key>config</key>
+      <dict>
         <key>alfredfiltersresults</key>
         <false/>
+        <key>alfredfiltersresultsmatchmode</key>
+        <integer>0</integer>
+        <key>argumenttrimmode</key>
+        <integer>0</integer>
         <key>argumenttype</key>
         <integer>1</integer>
         <key>escaping</key>
@@ -112,6 +143,13 @@
       <integer>490</integer>
       <key>ypos</key>
       <integer>300</integer>
+    </dict>
+    <key>AEDE6F2A-3933-4CB6-9F5B-0D53DDFE79BA</key>
+    <dict>
+      <key>xpos</key>
+      <integer>490</integer>
+      <key>ypos</key>
+      <integer>100</integer>
     </dict>
   </dict>
   <key>version</key>
