@@ -43,5 +43,10 @@ echo "Updating version ..."
 curVersion=$(cat ../package.json | jq '.version' | sed 's/"//g')
 sed -i '' 's/{{version}}/'${curVersion}'/' info.plist
 
+echo "Injecting auto-update script ..."
+tmpfile="$(mktemp)"
+cat ../src/update.sh | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g' > ${tmpfile}
+sed -i '' -e "/{{update_script}}/{r ${tmpfile}" -e 'd' -e '}' info.plist
+
 echo "Bundling workflow ..."
 zip -Z deflate -rq9 ../alfred-emoji.alfredworkflow * -x etc
