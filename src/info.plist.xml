@@ -207,7 +207,7 @@
     <key>F5CA3331-1B99-45EF-8E9A-06C417387250</key>
     <dict>
       <key>note</key>
-      <string>Auto Update</string>
+      <string>Auto Update - remove to disable</string>
       <key>xpos</key>
       <integer>760</integer>
       <key>ypos</key>
