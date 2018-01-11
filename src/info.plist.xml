@@ -127,11 +127,15 @@
     </dict>
   </array>
   <key>readme</key>
-  <string>Type an emoji name, or alias, to find it and copy it.</string>
+  <string><![CDATA[
+  {{readme}}
+  ]]></string>
   <key>uidata</key>
   <dict>
     <key>05450F7C-3D4F-45BF-ACA3-9422EF54EFDD</key>
     <dict>
+      <key>note</key>
+      <string>Please submit issues and feature requests at https://github.com/jsumners/alfred-emoji/issues</string>
       <key>xpos</key>
       <integer>100</integer>
       <key>ypos</key>
