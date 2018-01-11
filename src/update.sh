@@ -26,9 +26,10 @@ function fetch_download_url {
 }
 
 function download_and_install {
+  readonly tmpfile="$(mktemp).alfredworkflow"
   notification 'Downloading and installing…'
-  curl --silent --location --output "${HOME}/Downloads/${alfred_workflow_name}.alfredworkflow" "${1}"
-  open "${HOME}/Downloads/${alfred_workflow_name}.alfredworkflow"
+  curl --silent --location --output "${tmpfile}" "${1}"
+  open "${tmpfile}"
 }
 
 # Local sanity checks
