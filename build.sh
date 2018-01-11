@@ -15,6 +15,9 @@ cp ${parentDir}/src/emoji.js .
 cp ${parentDir}/src/search.js .
 cp ${parentDir}/src/info.plist.xml ./info.plist
 
+readme="${parentDir}/src/Readme.md"
+sed -i '' -e "/{{readme}}/{r ${readme}" -e 'd' -e '}' info.plist
+
 echo "Installing emojilib ..."
 npm install --silent --prefix ./ emojilib
 ltsVersion=$(${parentDir}/lib/getLTSversion.sh)
