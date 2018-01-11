@@ -32,13 +32,13 @@ workflow instead of trusting the [provided binary][releases].
 emoji [query]
 ```
 
-Press <kbd>enter</kbd>: **Copy the symbol** of the selected emoji (e.g. 🤣) to
+Press <kbd>return</kbd> (↵): **Copy the symbol** of the selected emoji (e.g. 🤣) to
 your clipboard.
 
-Press <kbd>alt</kbd>+<kbd>enter</kbd>: **Copy the code** of the selected emoji
+Press <kbd>alt</kbd>+<kbd>return</kbd> (⌥↵): **Copy the code** of the selected emoji)
 (e.g. `:rofl:`) to your clipboard.
 
-Press <kbd>cmd</kbd>+<kbd>enter</kbd>: **Paste the symbol** of the selected
+Press <kbd>cmd</kbd>+<kbd>return</kbd> (⌘↵): **Paste the symbol** of the selected
 emoji (e.g. 🤣) directly to your frontmost application.
 
 ## Building the Workflow
