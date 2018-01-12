@@ -55,6 +55,11 @@ seems to be unmaintained (some emoji don't copy and some newer are missing).
 Whereas his project is based on the Ruby language, this one is based on
 JavaScript using [Node.js][node].
 
+## Other
+
+* [Associated Alfred Forum Post][alfredforum]
+* [Emoji Keyword Library][emojilib]
+
 ## License
 
 [MIT License](http://jsumners.mit-license.org/)
@@ -63,3 +68,5 @@ JavaScript using [Node.js][node].
 [carlos]: https://github.com/carlosgaldino/alfred-emoji-workflow/
 [node]: https://nodejs.org/
 [releases]: https://github.com/jsumners/alfred-emoji/releases
+[alfredforum]: https://www.alfredforum.com/topic/11126-alfred-emoji-search-emojis-by-name-or-keyword/
+[emojilib]: https://github.com/muan/emojilib
