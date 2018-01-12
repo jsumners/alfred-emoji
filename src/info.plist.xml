@@ -31,6 +31,32 @@
         <false/>
       </dict>
     </array>
+    <key>5A54554C-598A-41C6-B0D9-62046CEFB1AD</key>
+    <array>
+      <dict>
+        <key>destinationuid</key>
+        <string>F5CA3331-1B99-45EF-8E9A-06C417387250</string>
+        <key>modifiers</key>
+        <integer>0</integer>
+        <key>modifiersubtext</key>
+        <string></string>
+        <key>vitoclose</key>
+        <false/>
+      </dict>
+    </array>
+    <key>AEDE6F2A-3933-4CB6-9F5B-0D53DDFE79BA</key>
+    <array>
+      <dict>
+        <key>destinationuid</key>
+        <string>F5CA3331-1B99-45EF-8E9A-06C417387250</string>
+        <key>modifiers</key>
+        <integer>0</integer>
+        <key>modifiersubtext</key>
+        <string></string>
+        <key>vitoclose</key>
+        <false/>
+      </dict>
+    </array>
   </dict>
   <key>createdby</key>
   <string>James Sumners</string>
@@ -111,6 +137,31 @@
     <dict>
       <key>config</key>
       <dict>
+        <key>concurrently</key>
+        <false/>
+        <key>escaping</key>
+        <integer>102</integer>
+        <key>script</key>
+        <string>
+          {{update_script}}
+        </string>
+        <key>scriptargtype</key>
+        <integer>1</integer>
+        <key>scriptfile</key>
+        <string></string>
+        <key>type</key>
+        <integer>0</integer>
+      </dict>
+      <key>type</key>
+      <string>alfred.workflow.action.script</string>
+      <key>uid</key>
+      <string>F5CA3331-1B99-45EF-8E9A-06C417387250</string>
+      <key>version</key>
+      <integer>2</integer>
+    </dict>
+    <dict>
+      <key>config</key>
+      <dict>
         <key>autopaste</key>
         <false/>
         <key>clipboardtext</key>
@@ -150,10 +201,21 @@
     </dict>
     <key>AEDE6F2A-3933-4CB6-9F5B-0D53DDFE79BA</key>
     <dict>
+      <key>note</key>
+      <string>Auto Paste</string>
       <key>xpos</key>
       <integer>490</integer>
       <key>ypos</key>
       <integer>100</integer>
+    </dict>
+    <key>F5CA3331-1B99-45EF-8E9A-06C417387250</key>
+    <dict>
+      <key>note</key>
+      <string>Auto Update - remove to disable</string>
+      <key>xpos</key>
+      <integer>760</integer>
+      <key>ypos</key>
+      <integer>200</integer>
     </dict>
   </dict>
   <key>version</key>

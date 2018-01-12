@@ -41,6 +41,13 @@ Press <kbd>alt</kbd>+<kbd>return</kbd> (⌥↵): **Copy the code** of the select
 Press <kbd>cmd</kbd>+<kbd>return</kbd> (⌘↵): **Paste the symbol** of the selected
 emoji (e.g. 🤣) directly to your frontmost application.
 
+## Automatic Updates
+
+This workflow will automatically check for updates at most once per day. If a
+new release is found, it automatically downloads and installs the latest
+version of the workflow. All downloads come directly from official [GitHub
+releases][releases].
+
 ## Building the Workflow
 
 1. Clone this repository
