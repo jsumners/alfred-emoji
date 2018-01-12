@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "scripts": {
     "build": "./build.sh",
     "load": "npm run build && open alfred-emoji.alfredworkflow",
