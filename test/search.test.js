@@ -70,3 +70,9 @@ test('finds "plant nature"', (t) => {
   const found = search('plant nature')
   t.ok(Object.keys(found.items).length > 0)
 })
+
+test('finds "fruit banana"', (t) => {
+  t.plan(1)
+  const found = search('fruit banana')
+  t.ok(Object.keys(found.items).length > 0)
+})

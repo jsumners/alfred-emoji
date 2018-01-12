@@ -32,16 +32,11 @@ const alfredItems = (names) => {
 
 const all = () => alfredItems(emojiNames)
 
-const matchingName = (terms) => {
-  return emojiNames.filter((name) => {
-    return terms.every((term) => name.includes(term))
-  })
-}
-
-const matchingAlias = (terms) => {
+const matches = (terms) => {
   return emojiNames.filter((name) => {
     return terms.every((term) => {
-      return emojilib.lib[name].keywords.some((keyword) => keyword.includes(term))
+      return name.includes(term) ||
+        emojilib.lib[name].keywords.some((keyword) => keyword.includes(term))
     })
   })
 }
@@ -54,8 +49,5 @@ module.exports = function search (query) {
 
   const terms = parse(query)
 
-  const names = matchingName(terms)
-        .concat(matchingAlias(terms))
-
-  return alfredItems(new Set(names))
+  return alfredItems(matches(terms))
 }
