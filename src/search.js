@@ -32,23 +32,30 @@ const alfredItems = (names) => {
 
 const all = () => alfredItems(emojiNames)
 
-const matchingName = (searchTerm) => {
-  return emojiNames.filter((name) => name.includes(searchTerm))
-}
-
-const matchingAlias = (searchTerm) => {
+const matchingName = (terms) => {
   return emojiNames.filter((name) => {
-    return emojilib.lib[name].keywords.some((keyword) => keyword.includes(searchTerm))
+    return terms.every((term) => name.includes(term))
   })
 }
+
+const matchingAlias = (terms) => {
+  return emojiNames.filter((name) => {
+    return terms.every((term) => {
+      return emojilib.lib[name].keywords.some((keyword) => keyword.includes(term))
+    })
+  })
+}
+
+// :thumbs up: => ['thumbs', 'up']
+const parse = query => query.replace(/[:]/g, '').split(/\s+/)
 
 module.exports = function search (query) {
   if (!query) return all()
 
-  const searchTerm = query.replace(/[:\s]/g, '') // :thumbs up: => thumbsup
+  const terms = parse(query)
 
-  const names = matchingName(searchTerm)
-        .concat(matchingAlias(searchTerm))
+  const names = matchingName(terms)
+        .concat(matchingAlias(terms))
 
   return alfredItems(new Set(names))
 }

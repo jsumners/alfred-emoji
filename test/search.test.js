@@ -52,3 +52,21 @@ test('unique results', (t) => {
   const set = new Set(names)
   t.ok(names.length === set.size)
 })
+
+test('finds "open book"', (t) => {
+  t.plan(1)
+  const found = search('open book')
+  t.ok(found.items[0].title === 'open_book')
+})
+
+test('finds "book open"', (t) => {
+  t.plan(1)
+  const found = search('book open')
+  t.ok(found.items[0].title === 'open_book')
+})
+
+test('finds "plant nature"', (t) => {
+  t.plan(1)
+  const found = search('plant nature')
+  t.ok(Object.keys(found.items).length > 0)
+})
