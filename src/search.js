@@ -3,17 +3,20 @@
 const emojilib = require('emojilib')
 const emojiNames = emojilib.ordered
 
+const verb = process.env.snippetapp ? 'Paste' : 'Copy'
+const preposition = process.env.snippetapp ? 'as snippet' : 'to clipboard'
+
 const alfredItem = (emoji, name) => {
   return {
     uid: name,
     title: name,
-    subtitle: `Copy "${emoji}" (${name}) to clipboard`,
+    subtitle: `${verb} "${emoji}" (${name}) ${preposition}`,
     arg: emoji,
     autocomplete: name,
     icon: { path: `./icons/${name}.png` },
     mods: {
       alt: {
-        subtitle: `Copy ":${name}:" (${emoji}) to clipboard`,
+        subtitle: `${verb} ":${name}:" (${emoji}) ${preposition}`,
         arg: `:${name}:`
       }
     }
