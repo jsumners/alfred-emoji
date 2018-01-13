@@ -22,7 +22,17 @@
       </dict>
       <dict>
         <key>destinationuid</key>
-        <string>5A54554C-598A-41C6-B0D9-62046CEFB1AD</string>
+        <string>7521B349-C1D6-4186-B21E-8EAC41BD18F3</string>
+        <key>modifiers</key>
+        <integer>0</integer>
+        <key>modifiersubtext</key>
+        <string></string>
+        <key>vitoclose</key>
+        <false/>
+      </dict>
+      <dict>
+        <key>destinationuid</key>
+        <string>E577A252-59CC-4971-9A6E-90F0C02DC35E</string>
         <key>modifiers</key>
         <integer>0</integer>
         <key>modifiersubtext</key>
@@ -44,11 +54,50 @@
         <false/>
       </dict>
     </array>
+    <key>69116487-E1CC-4FAE-BBFC-7904198F317B</key>
+    <array>
+      <dict>
+        <key>destinationuid</key>
+        <string>05450F7C-3D4F-45BF-ACA3-9422EF54EFDD</string>
+        <key>modifiers</key>
+        <integer>0</integer>
+        <key>modifiersubtext</key>
+        <string></string>
+        <key>vitoclose</key>
+        <false/>
+      </dict>
+    </array>
+    <key>7521B349-C1D6-4186-B21E-8EAC41BD18F3</key>
+    <array>
+      <dict>
+        <key>destinationuid</key>
+        <string>AEDE6F2A-3933-4CB6-9F5B-0D53DDFE79BA</string>
+        <key>modifiers</key>
+        <integer>0</integer>
+        <key>modifiersubtext</key>
+        <string></string>
+        <key>vitoclose</key>
+        <false/>
+      </dict>
+    </array>
     <key>AEDE6F2A-3933-4CB6-9F5B-0D53DDFE79BA</key>
     <array>
       <dict>
         <key>destinationuid</key>
         <string>F5CA3331-1B99-45EF-8E9A-06C417387250</string>
+        <key>modifiers</key>
+        <integer>0</integer>
+        <key>modifiersubtext</key>
+        <string></string>
+        <key>vitoclose</key>
+        <false/>
+      </dict>
+    </array>
+    <key>E577A252-59CC-4971-9A6E-90F0C02DC35E</key>
+    <array>
+      <dict>
+        <key>destinationuid</key>
+        <string>5A54554C-598A-41C6-B0D9-62046CEFB1AD</string>
         <key>modifiers</key>
         <integer>0</integer>
         <key>modifiersubtext</key>
@@ -84,6 +133,25 @@
     <dict>
       <key>config</key>
       <dict>
+        <key>inputstring</key>
+        <string>{var:snippetapp}</string>
+        <key>matchcasesensitive</key>
+        <true/>
+        <key>matchmode</key>
+        <integer>1</integer>
+        <key>matchstring</key>
+        <string></string>
+      </dict>
+      <key>type</key>
+      <string>alfred.workflow.utility.filter</string>
+      <key>uid</key>
+      <string>7521B349-C1D6-4186-B21E-8EAC41BD18F3</string>
+      <key>version</key>
+      <integer>1</integer>
+    </dict>
+    <dict>
+      <key>config</key>
+      <dict>
         <key>autopaste</key>
         <true/>
         <key>clipboardtext</key>
@@ -95,6 +163,60 @@
       <string>alfred.workflow.output.clipboard</string>
       <key>uid</key>
       <string>AEDE6F2A-3933-4CB6-9F5B-0D53DDFE79BA</string>
+      <key>version</key>
+      <integer>2</integer>
+    </dict>
+    <dict>
+      <key>config</key>
+      <dict>
+        <key>action</key>
+        <integer>0</integer>
+        <key>argument</key>
+        <integer>0</integer>
+        <key>focusedappvariable</key>
+        <false/>
+        <key>focusedappvariablename</key>
+        <string></string>
+        <key>hotkey</key>
+        <integer>0</integer>
+        <key>hotmod</key>
+        <integer>0</integer>
+        <key>leftcursor</key>
+        <false/>
+        <key>modsmode</key>
+        <integer>0</integer>
+        <key>relatedAppsMode</key>
+        <integer>0</integer>
+      </dict>
+      <key>type</key>
+      <string>alfred.workflow.trigger.hotkey</string>
+      <key>uid</key>
+      <string>F36CDFFD-4057-4FF1-965B-4379AE4B8D90</string>
+      <key>version</key>
+      <integer>2</integer>
+    </dict>
+    <dict>
+      <key>config</key>
+      <dict>
+        <key>concurrently</key>
+        <false/>
+        <key>escaping</key>
+        <integer>102</integer>
+        <key>script</key>
+        <string>
+          {{update_script}}
+        </string>
+        <key>scriptargtype</key>
+        <integer>1</integer>
+        <key>scriptfile</key>
+        <string></string>
+        <key>type</key>
+        <integer>0</integer>
+      </dict>
+      <key>type</key>
+      <string>alfred.workflow.action.script</string>
+      <key>uid</key>
+      <string>F5CA3331-1B99-45EF-8E9A-06C417387250</string>
       <key>version</key>
       <integer>2</integer>
     </dict>
@@ -150,58 +272,17 @@
     <dict>
       <key>config</key>
       <dict>
-        <key>concurrently</key>
-        <false/>
-        <key>escaping</key>
-        <integer>102</integer>
-        <key>script</key>
-        <string>
-          {{update_script}}
-        </string>
-        <key>scriptargtype</key>
-        <integer>1</integer>
-        <key>scriptfile</key>
-        <string></string>
-        <key>type</key>
-        <integer>0</integer>
-      </dict>
-      <key>type</key>
-      <string>alfred.workflow.action.script</string>
-      <key>uid</key>
-      <string>F5CA3331-1B99-45EF-8E9A-06C417387250</string>
-      <key>version</key>
-      <integer>2</integer>
-    </dict>
-    <dict>
-      <key>config</key>
-      <dict>
-        <key>action</key>
-        <integer>0</integer>
-        <key>argument</key>
-        <integer>0</integer>
         <key>focusedappvariable</key>
-        <false/>
+        <true/>
         <key>focusedappvariablename</key>
-        <string></string>
-        <key>hotkey</key>
-        <integer>0</integer>
-        <key>hotmod</key>
-        <integer>0</integer>
-        <key>hotstring</key>
-        <string></string>
-        <key>leftcursor</key>
-        <false/>
-        <key>modsmode</key>
-        <integer>0</integer>
-        <key>relatedAppsMode</key>
-        <integer>0</integer>
+        <string>snippetapp</string>
       </dict>
       <key>type</key>
-      <string>alfred.workflow.trigger.hotkey</string>
+      <string>alfred.workflow.trigger.snippet</string>
       <key>uid</key>
-      <string>F36CDFFD-4057-4FF1-965B-4379AE4B8D90</string>
+      <string>69116487-E1CC-4FAE-BBFC-7904198F317B</string>
       <key>version</key>
-      <integer>2</integer>
+      <integer>1</integer>
     </dict>
     <dict>
       <key>config</key>
@@ -219,6 +300,25 @@
       <string>5A54554C-598A-41C6-B0D9-62046CEFB1AD</string>
       <key>version</key>
       <integer>2</integer>
+    </dict>
+    <dict>
+      <key>config</key>
+      <dict>
+        <key>inputstring</key>
+        <string>{var:snippetapp}</string>
+        <key>matchcasesensitive</key>
+        <true/>
+        <key>matchmode</key>
+        <integer>0</integer>
+        <key>matchstring</key>
+        <string></string>
+      </dict>
+      <key>type</key>
+      <string>alfred.workflow.utility.filter</string>
+      <key>uid</key>
+      <string>E577A252-59CC-4971-9A6E-90F0C02DC35E</string>
+      <key>version</key>
+      <integer>1</integer>
     </dict>
   </array>
   <key>readme</key>
@@ -243,6 +343,20 @@
       <key>ypos</key>
       <integer>260</integer>
     </dict>
+    <key>69116487-E1CC-4FAE-BBFC-7904198F317B</key>
+    <dict>
+      <key>xpos</key>
+      <integer>50</integer>
+      <key>ypos</key>
+      <integer>260</integer>
+    </dict>
+    <key>7521B349-C1D6-4186-B21E-8EAC41BD18F3</key>
+    <dict>
+      <key>xpos</key>
+      <integer>450</integer>
+      <key>ypos</key>
+      <integer>130</integer>
+    </dict>
     <key>AEDE6F2A-3933-4CB6-9F5B-0D53DDFE79BA</key>
     <dict>
       <key>note</key>
@@ -252,12 +366,19 @@
       <key>ypos</key>
       <integer>100</integer>
     </dict>
+    <key>E577A252-59CC-4971-9A6E-90F0C02DC35E</key>
+    <dict>
+      <key>xpos</key>
+      <integer>450</integer>
+      <key>ypos</key>
+      <integer>290</integer>
+    </dict>
     <key>F36CDFFD-4057-4FF1-965B-4379AE4B8D90</key>
     <dict>
       <key>xpos</key>
       <integer>50</integer>
       <key>ypos</key>
-      <integer>180</integer>
+      <integer>100</integer>
     </dict>
     <key>F5CA3331-1B99-45EF-8E9A-06C417387250</key>
     <dict>
