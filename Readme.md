@@ -38,6 +38,10 @@ new release is found, it automatically downloads and installs the latest
 version of the workflow. All downloads come directly from official [GitHub
 releases][releases].
 
+## Optional Hotkey and Snippet Triggers
+
+Trigger the workflow with either a custom hotkey or a custom snippet.
+
 ## Building the Workflow
 
 1. Clone this repository
