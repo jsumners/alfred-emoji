@@ -18,6 +18,10 @@ cp ${parentDir}/src/info.plist.xml ./info.plist
 echo "Installing emojilib ..."
 npm install --silent --prefix ./ emojilib
 ltsVersion=$(${parentDir}/lib/getLTSversion.sh)
+if [ ! $? -eq 0 ]; then
+  echo "Building requires jq -- https://stedolan.github.io/jq/"
+  exit 1
+fi
 ltsURL="https://nodejs.org/dist/${ltsVersion}/node-${ltsVersion}-darwin-x64.tar.gz"
 
 echo "Downloading node binary ..."
