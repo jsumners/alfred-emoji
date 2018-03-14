@@ -3,8 +3,13 @@
 const emojilib = require('emojilib')
 const emojiNames = emojilib.ordered
 
-const verb = process.env.snippetapp ? 'Paste' : 'Copy'
-const preposition = process.env.snippetapp ? 'as snippet' : 'to clipboard'
+let verb = 'Copy'
+let preposition = 'to clipboard'
+
+const resetWordsForPasteByDefault = () => {
+  verb = 'Paste'
+  preposition = 'as snippet'
+}
 
 const alfredItem = (emoji, name) => {
   return {
@@ -47,7 +52,9 @@ const matches = (terms) => {
 // :thumbs up: => ['thumbs', 'up']
 const parse = query => query.replace(/[:]/g, '').split(/\s+/)
 
-module.exports = function search (query) {
+module.exports = function search (query, pasteByDefault = false) {
+  if (pasteByDefault) resetWordsForPasteByDefault()
+
   if (!query) return all()
 
   const terms = parse(query)

@@ -1,6 +1,7 @@
 {
   "version": "1.6.0",
   "scripts": {
+    "webpack": "webpack",
     "build": "./build.sh",
     "load": "npm run build && open alfred-emoji.alfredworkflow",
     "test": "tap 'test/**/*.test.js'",
@@ -14,13 +15,14 @@
   ],
   "dependencies": {
     "emojilib": "^2.2.12",
-    "fontkit": "^1.7.7",
-    "semver": "^5.4.1"
+    "fontkit": "^1.7.7"
   },
   "devDependencies": {
     "pre-commit": "^1.2.2",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
-    "tap": "^11.0.1"
+    "tap": "^11.0.1",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12"
   }
 }
