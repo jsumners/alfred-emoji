@@ -23,7 +23,7 @@ cd ..
 cp icons/beer.png ./icon.png
 
 echo "Updating version ..."
-curVersion=$(cat ${parentDir}/package.json | jq '.version' | sed 's/"//g')
+curVersion=$(node -e "console.log(require('${parentDir}/package.json').version)")
 sed -i '' 's/{{version}}/'${curVersion}'/' info.plist
 
 echo "Injecting readme ..."
