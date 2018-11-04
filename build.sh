@@ -8,32 +8,11 @@ parentDir=$(pwd)
 
 cd ${PWD}
 
-[ ! -d output ] && mkdir output
+npm run webpack
+
 cd output
 
-cp ${parentDir}/src/emoji.js .
-cp ${parentDir}/src/search.js .
 cp ${parentDir}/src/info.plist.xml ./info.plist
-
-echo "Installing emojilib ..."
-npm install --silent --prefix ./ emojilib
-ltsVersion=$(${parentDir}/lib/getLTSversion.sh)
-if [ ! $? -eq 0 ]; then
-  echo "Building requires jq -- https://stedolan.github.io/jq/"
-  exit 1
-fi
-ltsURL="https://nodejs.org/dist/${ltsVersion}/node-${ltsVersion}-darwin-x64.tar.gz"
-
-echo "Downloading node binary ..."
-curl -sO ${ltsURL} && \
-  tar zxf node-${ltsVersion}-darwin-x64.tar.gz && \
-  cp ./node-${ltsVersion}-darwin-x64/bin/node . && \
-  rm -rf node-${ltsVersion}-darwin-x64*
-
-if [ $? -ne 0 ]; then
-  echo "Failed to get node binary"
-  exit 1
-fi
 
 echo "Generating icons ..."
 [ ! -d icons ] && mkdir icons
@@ -44,7 +23,7 @@ cd ..
 cp icons/beer.png ./icon.png
 
 echo "Updating version ..."
-curVersion=$(cat ${parentDir}/package.json | jq '.version' | sed 's/"//g')
+curVersion=$(node -e "console.log(require('${parentDir}/package.json').version)")
 sed -i '' 's/{{version}}/'${curVersion}'/' info.plist
 
 echo "Injecting readme ..."

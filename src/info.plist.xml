@@ -248,7 +248,7 @@
         <key>script</key>
         <string>query=$*
 
-./node emoji.js "$query"</string>
+osascript -l JavaScript emoji.js "$query" 2&gt;&amp;1</string>
         <key>scriptargtype</key>
         <integer>1</integer>
         <key>scriptfile</key>
