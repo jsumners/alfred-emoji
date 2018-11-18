@@ -1,5 +1,5 @@
 {
-  "version": "1.7.0",
+  "version": "1.7.1",
   "scripts": {
     "webpack": "webpack",
     "clean": "rm -f *.alfredworkflow; rm -rf output/*",
