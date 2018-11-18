@@ -2,6 +2,7 @@
   "version": "1.7.0",
   "scripts": {
     "webpack": "webpack",
+    "clean": "rm -f *.alfredworkflow; rm -rf output/*",
     "build": "./build.sh",
     "load": "npm run build && open alfred-emoji.alfredworkflow",
     "test": "tap 'test/**/*.test.js'",
