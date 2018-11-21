@@ -76,3 +76,9 @@ test('finds "fruit banana"', (t) => {
   const found = search('fruit banana')
   t.ok(Object.keys(found.items).length > 0)
 })
+
+test('finds "teddy bear (macOS 10.14.1 / iOS 12.1)"', (t) => {
+  t.plan(1)
+  const found = search('teddy bear')
+  t.ok(Object.keys(found.items).length > 0)
+})
