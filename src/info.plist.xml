@@ -256,7 +256,7 @@ osascript -l JavaScript emoji.js "$query" 2&gt;&amp;1</string>
         <key>subtext</key>
         <string></string>
         <key>title</key>
-        <string>Seach emoji</string>
+        <string>Search emoji</string>
         <key>type</key>
         <integer>0</integer>
         <key>withspace</key>
