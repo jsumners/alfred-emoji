@@ -390,6 +390,11 @@ osascript -l JavaScript emoji.js "$query" 2&gt;&amp;1</string>
       <integer>180</integer>
     </dict>
   </dict>
+  <key>variables</key>
+  <dict>
+    <key>skin_tone</key>
+    <string></string>
+  </dict>
   <key>version</key>
   <string>{{version}}</string>
   <key>webaddress</key>
