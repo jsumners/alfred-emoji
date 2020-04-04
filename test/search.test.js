@@ -82,3 +82,33 @@ test('finds "teddy bear (macOS 10.14.1 / iOS 12.1)"', (t) => {
   const found = search('teddy bear')
   t.ok(Object.keys(found.items).length > 0)
 })
+
+test('finds "+1" null skin tone', (t) => {
+  t.plan(1)
+  const found = search('+1', null)
+  t.ok(found.items[0].arg === '👍')
+})
+
+test('finds "+1" medium skin tone', (t) => {
+  t.plan(1)
+  const found = search('+1', 2)
+  t.ok(found.items[0].arg === '👍🏽')
+})
+
+test('finds "+1" invalid skin tone', (t) => {
+  t.plan(1)
+  const found = search('+1', 5)
+  t.ok(found.items[0].arg === '👍')
+})
+
+test('enables "+1" shift-modifier neutral skin tone', (t) => {
+  t.plan(1)
+  const found = search('+1', 2)
+  t.ok(found.items[0].mods.shift.arg === '👍')
+})
+
+test('finds "unicorn" (ignore skin tone)', (t) => {
+  t.plan(1)
+  const found = search('unicorn', 2)
+  t.ok(found.items[0].arg === '🦄')
+})
