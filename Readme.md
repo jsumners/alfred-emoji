@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/jsumners/alfred-emoji.svg?branch=master)](https://travis-ci.org/jsumners/alfred-emoji)
 
 An [Alfred workflow][alfred] that makes it easy to search for emoji and copy
-them to the clipboard 🤘. **Now supports skin tones!**
+them to the clipboard 🤘.
 
 ![screenshot](images/screenshot.png)
 
@@ -27,14 +27,14 @@ Press <kbd>alt</kbd>+<kbd>return</kbd> (⌥↵): **Copy the code** of the select
 (e.g. `:rofl:`) to your clipboard.
 
 Press <kbd>shift</kbd>+<kbd>return</kbd> (⇧↵): **Copy the default symbol** of the selected emoji)
-(e.g. 🤣) to your clipboard with no skin tone modifier.
+(e.g. 🤣) to your clipboard without skin tone modifier.
 
 Press <kbd>cmd</kbd>+<kbd>return</kbd> (⌘↵): **Paste the symbol** of the selected
 emoji (e.g. 🤣) directly to your frontmost application.
 
 ### Set skin tone
 
-To change the emoji skin tone for supported emoji you can change the `skin_tone` variable in Alfred.
+To change the emoji skin tone for supported emoji set the `skin_tone` environment variable in Alfred:
 
 ![screenshot skin tone settings](images/screenshot-skin-tone-setting.png)
 
