@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+    - run: npm install
+    - run: npm test
+    - run: ./build.sh
+    - uses: actions/upload-artifact@v1
+      with:
+        name: alfred-emoji.alfredworkflow
+        path: alfred-emoji.alfredworkflow
