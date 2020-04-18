@@ -16,5 +16,8 @@ jobs:
     - uses: actions/setup-node@v1
     - run: npm install
     - run: npm test
-      env:
-        CI: true
+    - run: ./build.sh
+    - uses: actions/upload-artifact@v1
+      with:
+        name: alfred-emoji.alfredworkflow
+        path: alfred-emoji.alfredworkflow
