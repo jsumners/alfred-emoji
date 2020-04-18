@@ -6,7 +6,7 @@ function getenv (name) {
 
   ObjC.import('stdlib')
   try {
-    return $.getenv('snippetapp')
+    return $.getenv(name)
   } catch (e) {
     return null
   }
@@ -14,12 +14,13 @@ function getenv (name) {
 
 const search = require('./search')
 const pasteByDefault = getenv('snippetapp')
+const skinTone = getenv('skin_tone')
 
 // JXA: JavaScript for Automation Interface (`osascript -l JavaScript`)
 // Note: In JXA, console.log writes to stderr instead of stdout
 function run (argv) {
   const query = argv[0]
-  const found = search(query, pasteByDefault)
+  const found = search(query, skinTone, pasteByDefault)
   console.log(JSON.stringify(found))
 }
 
