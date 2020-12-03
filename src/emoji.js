@@ -12,9 +12,23 @@ function getenv (name) {
   }
 }
 
+function getRandomSkinTone () {
+  return Math.round(Math.random() * 4)
+}
+
+function getSkinTone () {
+  const skinTone = getenv('skin_tone')
+
+  if (skinTone === 'random') {
+    return getRandomSkinTone()
+  }
+
+  return skinTone
+}
+
 const search = require('./search')
 const pasteByDefault = getenv('snippetapp')
-const skinTone = getenv('skin_tone')
+const skinTone = getSkinTone()
 
 // JXA: JavaScript for Automation Interface (`osascript -l JavaScript`)
 // Note: In JXA, console.log writes to stderr instead of stdout
