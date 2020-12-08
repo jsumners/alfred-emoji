@@ -1,6 +1,11 @@
 /* eslint-disable no-undef */
 'use strict'
 
+const search = require('./search')
+const { getRandomSkinTone } = require('./utils')
+const pasteByDefault = getenv('snippetapp')
+const skinTone = getSkinTone()
+
 function getenv (name) {
   if (typeof $ === 'undefined') return process.env[name]
 
@@ -12,10 +17,6 @@ function getenv (name) {
   }
 }
 
-function getRandomSkinTone () {
-  return Math.round(Math.random() * 4)
-}
-
 function getSkinTone () {
   const skinTone = getenv('skin_tone')
 
@@ -25,10 +26,6 @@ function getSkinTone () {
 
   return skinTone
 }
-
-const search = require('./search')
-const pasteByDefault = getenv('snippetapp')
-const skinTone = getSkinTone()
 
 // JXA: JavaScript for Automation Interface (`osascript -l JavaScript`)
 // Note: In JXA, console.log writes to stderr instead of stdout
