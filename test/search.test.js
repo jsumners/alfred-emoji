@@ -9,6 +9,18 @@ test('finds "thumbs up"', (t) => {
   t.ok(Object.keys(found.items).length > 0)
 })
 
+test('finds "thumbs up" when "pasteByDefault" is enabled', (t) => {
+  t.plan(1)
+  const found = search('thumbs up', 1, true)
+  t.ok(Object.keys(found.items).length > 0)
+})
+
+test('finds ALL results when no query is provided', (t) => {
+  t.plan(1)
+  const found = search()
+  t.ok(Object.keys(found.items).length > 0)
+})
+
 test('finds "thu" partial', (t) => {
   t.plan(1)
   const found = search('thu')
@@ -25,6 +37,12 @@ test('omits "rage1"', (t) => {
   t.plan(1)
   const found = search('rage1')
   t.ok(Object.keys(found.items).length === 0)
+})
+
+test('applies modifier if possible', (t) => {
+  t.plan(1)
+  const found = search('a', 1)
+  t.ok(Object.keys(found.items).length > 0)
 })
 
 test('enables uid', (t) => {
