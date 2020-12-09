@@ -1,6 +1,13 @@
 'use strict'
 
-const test = require('tap').test
+const { test } = require('tap')
+const mock = require('mock-require')
+mock('emojilib', {
+  lib: require('./emojisMock.json'),
+  ordered: require('./orderedMock.json'),
+  fitzpatrick_scale_modifiers: ['🏻', '🏼', '🏽', '🏾', '🏿']
+})
+
 const search = require('../src/search')
 
 test('finds "thumbs up"', (t) => {
