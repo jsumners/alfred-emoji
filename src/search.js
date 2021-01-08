@@ -22,6 +22,15 @@ const setSkinToneModifier = (tone) => {
 
 const addModifier = (emoji, modifier) => {
   if (!modifier || !emoji.fitzpatrick_scale) return emoji.char
+
+  /*
+  * There are some emojis categorized as a sequence of emojis
+  * Emoji ZWJ Sequence is a combination of multiple emojis which display as a single emoji
+  * on supported platforms. These sequences are joined with a Zero Width Joiner character.
+  *
+  * https://emojipedia.org/emoji-zwj-sequence/
+  */
+
   const zwj = new RegExp('‍', 'g')
   return emoji.char.match(zwj) ? emoji.char.replace(zwj, modifier + '‍') : emoji.char + modifier
 }

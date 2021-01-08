@@ -16,6 +16,20 @@ test('finds "thumbs up"', (t) => {
   t.ok(Object.keys(found.items).length > 0)
 })
 
+/*
+* There are some emojis categorized as a sequence of emojis
+* Emoji ZWJ Sequence is a combination of multiple emojis which display as a single emoji
+* on supported platforms. These sequences are joined with a Zero Width Joiner character.
+*
+* https://emojipedia.org/emoji-zwj-sequence/
+*/
+
+test('finds emoji with zwj ("rockstar")', (t) => {
+  t.plan(1)
+  const found = search('rockstar', 2)
+  t.ok(Object.keys(found.items).length > 0)
+})
+
 test('finds "thumbs up" when "pasteByDefault" is enabled', (t) => {
   t.plan(1)
   const found = search('thumbs up', 1, true)

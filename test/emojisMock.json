@@ -161,6 +161,12 @@
     "fitzpatrick_scale": false,
     "category": "food_and_drink"
   },
+  "man_singer": {
+    "keywords": ["rockstar", "entertainer", "man", "human"],
+    "char": "👨‍🎤",
+    "fitzpatrick_scale": true,
+    "category": "people"
+  },
   "mango": {
     "keywords": ["fruit", "food", "tropical"],
     "char": "🥭",
