@@ -30,6 +30,12 @@ test('finds emoji with zwj ("rockstar")', (t) => {
   t.ok(Object.keys(found.items).length > 0)
 })
 
+test('does not throw when emoji is in orderedList but not in emojiLib', (t) => {
+  t.plan(1)
+  const found = search('baz')
+  t.ok(Object.keys(found.items).length === 0)
+})
+
 test('finds "thumbs up" when "pasteByDefault" is enabled', (t) => {
   t.plan(1)
   const found = search('thumbs up', 1, true)

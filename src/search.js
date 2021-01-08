@@ -79,11 +79,14 @@ const alfredItems = (names) => {
 
 const all = () => alfredItems(emojiNames)
 
+const libHasEmoji = (name, term) => {
+  return emojilib.lib[name] &&
+    emojilib.lib[name].keywords.some((keyword) => keyword.includes(term))
+}
 const matches = (terms) => {
   return emojiNames.filter((name) => {
     return terms.every((term) => {
-      return name.includes(term) ||
-        emojilib.lib[name].keywords.some((keyword) => keyword.includes(term))
+      return name.includes(term) || libHasEmoji(name, term)
     })
   })
 }
