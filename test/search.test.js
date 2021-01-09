@@ -152,8 +152,28 @@ test('enables "+1" shift-modifier neutral skin tone', (t) => {
   t.ok(found.items[0].mods.shift.arg === '👍')
 })
 
+test('finds "+1" with random skin tone', (t) => {
+  t.plan(1)
+  const found = search('+1', 'random')
+  t.ok(
+    [
+      '👍',
+      '👍🏻',
+      '👍🏽',
+      '👍🏾',
+      '👍🏿'
+    ].includes(found.items[0].arg)
+  )
+})
+
 test('finds "unicorn" (ignore skin tone)', (t) => {
   t.plan(1)
   const found = search('unicorn', 2)
+  t.ok(found.items[0].arg === '🦄')
+})
+
+test('finds "unicorn" (ignore "random" skin tone)', (t) => {
+  t.plan(1)
+  const found = search('unicorn', 'random')
   t.ok(found.items[0].arg === '🦄')
 })
