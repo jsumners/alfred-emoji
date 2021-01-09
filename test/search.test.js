@@ -1,11 +1,50 @@
 'use strict'
 
-const test = require('tap').test
+const { test } = require('tap')
+const mock = require('mock-require')
+mock('emojilib', {
+  lib: require('./emojisMock.json'),
+  ordered: require('./orderedMock.json'),
+  fitzpatrick_scale_modifiers: ['🏻', '🏼', '🏽', '🏾', '🏿']
+})
+
 const search = require('../src/search')
 
 test('finds "thumbs up"', (t) => {
   t.plan(1)
   const found = search('thumbs up')
+  t.ok(Object.keys(found.items).length > 0)
+})
+
+/*
+* There are some emojis categorized as a sequence of emojis
+* Emoji ZWJ Sequence is a combination of multiple emojis which display as a single emoji
+* on supported platforms. These sequences are joined with a Zero Width Joiner character.
+*
+* https://emojipedia.org/emoji-zwj-sequence/
+*/
+
+test('finds emoji with zwj ("rockstar")', (t) => {
+  t.plan(1)
+  const found = search('rockstar', 2)
+  t.ok(Object.keys(found.items).length > 0)
+})
+
+test('does not throw when emoji is in orderedList but not in emojiLib', (t) => {
+  t.plan(1)
+  const found = search('baz')
+  t.ok(Object.keys(found.items).length === 0)
+})
+
+test('finds "thumbs up" when "pasteByDefault" is enabled', (t) => {
+  t.plan(1)
+  const found = search('thumbs up', 1, true)
+  t.ok(Object.keys(found.items).length > 0)
+})
+
+test('finds ALL results when no query is provided', (t) => {
+  t.plan(1)
+  const found = search()
   t.ok(Object.keys(found.items).length > 0)
 })
 
@@ -25,6 +64,12 @@ test('omits "rage1"', (t) => {
   t.plan(1)
   const found = search('rage1')
   t.ok(Object.keys(found.items).length === 0)
+})
+
+test('applies modifier if possible', (t) => {
+  t.plan(1)
+  const found = search('a', 1)
+  t.ok(Object.keys(found.items).length > 0)
 })
 
 test('enables uid', (t) => {
