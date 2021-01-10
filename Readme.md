@@ -45,6 +45,7 @@ Options:
 - `2` => 👍🏽
 - `3` => 👍🏾
 - `4` => 👍🏿
+- `random` => 👍🏻 | 👍🏼 | 👍🏽 | 👍🏾 | 👍🏿
 
 After setting skin tone you can still quickly copy the default emoji with the <kbd>shift</kbd> modifier.
 
