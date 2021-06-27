@@ -5,9 +5,9 @@
     "clean": "rm -f *.alfredworkflow; rm -rf output/*",
     "build": "./build.sh",
     "load": "npm run build && open alfred-emoji.alfredworkflow",
-    "test": "tap 'test/**/*.test.js'",
+    "test": "tap 'test/**/*.test.js' --reporter classic",
     "test:watch": "npm test -- --watch",
-    "test-ci": "tap --cov 'test/**/*.test.js'",
+    "test-ci": "tap --cov 'test/**/*.test.js' --reporter classic",
     "lint": "standard | snazzy",
     "lint-ci": "standard"
   },
@@ -16,8 +16,9 @@
     "test"
   ],
   "dependencies": {
-    "emojilib": "^2.4.0",
-    "fontkit": "^1.7.7"
+    "emojilib": "^3.0.2",
+    "fontkit": "^1.7.7",
+    "unicode-emoji-json": "^0.2.1"
   },
   "devDependencies": {
     "mock-require": "^3.0.3",
