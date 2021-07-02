@@ -64,11 +64,13 @@ const alfredItem = (emoji, char) => {
     autocomplete: name,
     icon: { path: `./icons/${icon}.png` },
     mods: {
+      // copy a code for the emoji, e.g. :thumbs_down:
       alt: {
-        subtitle: `${verb} ":${name}:" (${emoji.char}) ${preposition}`,
-        arg: `:${name}:`,
+        subtitle: `${verb} ":${emoji.slug}:" (${char}) ${preposition}`,
+        arg: `:${emoji.slug}:`,
         icon: { path: `./icons/${emoji.slug}.png` }
       },
+      // copy the default symbol for the emoji, without skin tones
       shift: {
         subtitle: `${verb} "${char}" (${name}) ${preposition}`,
         arg: char,
