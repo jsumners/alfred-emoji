@@ -1,0 +1,230 @@
+{
+  "🤔": {
+    "name": "thinking",
+    "slug": "thinking",
+    "group": "people",
+    "skin_tone_support": false
+  },
+  "💭": {
+    "name": "thought_balloon",
+    "slug": "thought_balloon",
+    "group": "symbols",
+    "skin_tone_support": false
+  },
+  "🗯": {
+    "name": "right_anger_bubble",
+    "slug": "right_anger_bubble",
+    "group": "symbols",
+    "skin_tone_support": false
+  },
+  "😬": {
+    "name": "grimacing",
+    "slug": "grimacing",
+    "group": "people",
+    "skin_tone_support": false
+  },
+  "🤮": {
+    "name": "vomiting",
+    "slug": "vomiting",
+    "group": "people",
+    "skin_tone_support": false
+  },
+  "👍": {
+    "name": "+1",
+    "slug": "+1",
+    "group": "people",
+    "skin_tone_support": true
+  },
+  "👎": {
+    "name": "-1",
+    "slug": "-1",
+    "group": "people",
+    "skin_tone_support": true
+  },
+  "🙉": {
+    "name": "hear_no_evil",
+    "slug": "hear_no_evil",
+    "group": "animals_and_nature",
+    "skin_tone_support": false
+  },
+  "🦄": {
+    "name": "unicorn",
+    "slug": "unicorn",
+    "group": "animals_and_nature",
+    "skin_tone_support": false
+  },
+  "🌈": {
+    "name": "rainbow",
+    "slug": "rainbow",
+    "group": "travel_and_places",
+    "skin_tone_support": false
+  },
+  "🌩": {
+    "name": "cloud_with_lightning",
+    "slug": "cloud_with_lightning",
+    "group": "animals_and_nature",
+    "skin_tone_support": false
+  },
+  "⚡": {
+    "name": "zap",
+    "slug": "zap",
+    "group": "animals_and_nature",
+    "skin_tone_support": false
+  },
+  "🍏": {
+    "name": "green_apple",
+    "slug": "green_apple",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🍎": {
+    "name": "apple",
+    "slug": "apple",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🍐": {
+    "name": "pear",
+    "slug": "pear",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🍊": {
+    "name": "tangerine",
+    "slug": "tangerine",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🍋": {
+    "name": "lemon",
+    "slug": "lemon",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🍌": {
+    "name": "banana",
+    "slug": "banana",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🍉": {
+    "name": "watermelon",
+    "slug": "watermelon",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🍇": {
+    "name": "grapes",
+    "slug": "grapes",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🍓": {
+    "name": "strawberry",
+    "slug": "strawberry",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🍈": {
+    "name": "melon",
+    "slug": "melon",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🍒": {
+    "name": "cherries",
+    "slug": "cherries",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🍑": {
+    "name": "peach",
+    "slug": "peach",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🍍": {
+    "name": "pineapple",
+    "slug": "pineapple",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🥥": {
+    "name": "coconut",
+    "slug": "coconut",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🥝": {
+    "name": "kiwi_fruit",
+    "slug": "kiwi_fruit",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "👨‍🎤": {
+    "name": "man_singer",
+    "slug": "man_singer",
+    "group": "people",
+    "skin_tone_support": true
+  },
+  "🥭": {
+    "name": "mango",
+    "slug": "mango",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🥑": {
+    "name": "avocado",
+    "slug": "avocado",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🥦": {
+    "name": "broccoli",
+    "slug": "broccoli",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🍅": {
+    "name": "tomato",
+    "slug": "tomato",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🍆": {
+    "name": "eggplant",
+    "slug": "eggplant",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🥒": {
+    "name": "cucumber",
+    "slug": "cucumber",
+    "group": "food_and_drink",
+    "skin_tone_support": false
+  },
+  "🎰": {
+    "name": "slot_machine",
+    "slug": "slot_machine",
+    "group": "activity",
+    "skin_tone_support": false
+  },
+  "🧸": {
+    "name": "teddy_bear",
+    "slug": "teddy_bear",
+    "group": "objects",
+    "skin_tone_support": false
+  },
+  "📖": {
+    "name": "open_book",
+    "slug": "open_book",
+    "group": "objects",
+    "skin_tone_support": false
+  },
+  "🇱🇹": {
+    "name": "lithuania",
+    "slug": "lithuania",
+    "group": "flags",
+    "skin_tone_support": false
+  }
+}
