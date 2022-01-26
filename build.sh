@@ -20,7 +20,7 @@ cd icons
 node ${parentDir}/lib/genicons.js
 cd ..
 
-cp icons/beer.png ./icon.png
+cp icons/beer_mug.png ./icon.png
 
 echo "Updating version ..."
 curVersion=$(node -e "console.log(require('${parentDir}/package.json').version)")

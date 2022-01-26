@@ -18,7 +18,7 @@
   "dependencies": {
     "emojilib": "^3.0.2",
     "fontkit": "^1.7.7",
-    "unicode-emoji-json": "^0.2.1"
+    "unicode-emoji-json": "^0.3.0"
   },
   "devDependencies": {
     "mock-require": "^3.0.3",
