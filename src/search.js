@@ -41,7 +41,7 @@ const addModifier = (emoji, char, modifier) => {
   * https://emojipedia.org/emoji-zwj-sequence/
   */
 
-  const zwj = new RegExp('‍', 'g')
+  const zwj = new RegExp('‍', 'g') // eslint-disable-line
   return char.match(zwj) ? char.replace(zwj, modifier + '‍') : char + modifier
 }
 
