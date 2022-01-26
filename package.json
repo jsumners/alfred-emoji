@@ -5,9 +5,9 @@
     "clean": "rm -f *.alfredworkflow; rm -rf output/*",
     "build": "./build.sh",
     "load": "npm run build && open alfred-emoji.alfredworkflow",
-    "test": "tap 'test/**/*.test.js' --reporter classic",
-    "test:watch": "npm test -- --watch",
-    "test-ci": "tap --cov 'test/**/*.test.js' --reporter classic",
+    "test": "tap 'test/**/*.test.js' -R terse",
+    "test:watch": "npm test -- --watch --no-coverage-report",
+    "test-ci": "tap --cov 'test/**/*.test.js' -R terse",
     "lint": "standard | snazzy",
     "lint-ci": "standard"
   },
@@ -25,7 +25,7 @@
     "pre-commit": "^1.2.2",
     "snazzy": "^8.0.0",
     "standard": "^12.0.1",
-    "tap": "^14.1.0",
+    "tap": "^15.1.6",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
   }
