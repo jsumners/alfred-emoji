@@ -4,6 +4,8 @@
 <dict>
   <key>bundleid</key>
   <string>com.github.jsumners.alfred-emoji</string>
+  <key>category</key>
+  <string>Tools</string>
   <key>connections</key>
   <dict>
     <key>032C2A56-C75D-4477-A473-48DD2349666D</key>
@@ -364,55 +366,7 @@ osascript -l JavaScript emoji.js "$query" 2&gt;&amp;1</string>
         <integer>102</integer>
         <key>script</key>
         <string>
-# Based On The OneUpdater workflow, but heavily simplified for github releases
-# https://github.com/vitorgalvao/alfred-workflows/tree/master/OneUpdater
-
-# THESE VARIABLES MUST BE SET.
-readonly github_repo='jsumners/alfred-emoji'
-readonly frequency_check='1' # days
-
-# FROM HERE ON, CODE SHOULD BE LEFT UNTOUCHED!
-readonly info_plist='info.plist'
-
-function abort {
-  echo "${1}" &gt;&amp;2
-  exit 1
-}
-
-function notification {
-  osascript -e "display notification \"${1}\" with title \"${alfred_workflow_name}\" subtitle \"A new version is available\""
-}
-
-function fetch_remote_version {
-  curl --silent "https://api.github.com/repos/${github_repo}/releases/latest" | grep 'tag_name' | head -1 | sed -E 's/.*tag_name": "v?(.*)".*/\1/'
-}
-
-function fetch_download_url {
-  curl --silent "https://api.github.com/repos/${github_repo}/releases/latest" | grep 'browser_download_url.*\.alfredworkflow"' | head -1 | sed -E 's/.*browser_download_url": "(.*)".*/\1/'
-}
-
-function download_and_install {
-  readonly tmpfile="$(mktemp).alfredworkflow"
-  notification 'Downloading and installing…'
-  curl --silent --location --output "${tmpfile}" "${1}"
-  open "${tmpfile}"
-}
-
-# Local sanity checks
-[[ -n "${alfred_workflow_version}" ]] || abort "'alfred_workflow_version' must be set."
-[[ -n "${alfred_workflow_name}" ]] || abort "'alfred_workflow_name' must be set."
-[[ "${github_repo}" =~ ^.+\/.+$ ]] || abort "'github_repo' (${github_repo}) must be in the format 'username/repo'."
-[[ "${frequency_check}" =~ ^[0-9]+$ ]] || abort "'frequency_check' (${frequency_check}) must be a number."
-
-# Check for updates
-if [[ $(find "${info_plist}" -mtime +"${frequency_check}"d) ]]; then
-  if [[ "${alfred_workflow_version}" == "$(fetch_remote_version)" ]]; then
-    touch "${info_plist}" # Reset timer by touching local file
-    exit 0
-  fi
-
-  download_and_install "$(fetch_download_url)"
-fi
+          {{update_script}}
         </string>
         <key>scriptargtype</key>
         <integer>1</integer>
@@ -586,26 +540,9 @@ osascript -l JavaScript emoji.js "$query" 2&gt;&amp;1</string>
     </dict>
   </array>
   <key>readme</key>
-  <string># Emoji Workflow
-
-Type an emoji name, or alias, to find it and copy it.
-
-    emoji [query]
-
-return (↵) : Copy the symbol of the selected emoji (e.g. 🤣) to your clipboard.
-
-alt + return (⌥↵) : Copy the code of the selected emoji (e.g. ":rofl:") to your clipboard.
-
-cmd + return (⌘↵) : Paste the symbol of the selected emoji (e.g. 🤣) directly to your frontmost application.
-
-## Automatic Updates
-
-This workflow will automatically check for updates at most once per day. If a new release is found, it automatically downloads and installs the latest version of the workflow. All downloads come directly from official GitHub releases.
-
-## Support
-
-For assistance with issues, or to submit a feature request, please visit:
-https://github.com/jsumners/alfred-emoji/issues</string>
+  <string><![CDATA[
+  {{readme}}
+  ]]></string>
   <key>uidata</key>
   <dict>
     <key>032C2A56-C75D-4477-A473-48DD2349666D</key>
@@ -722,7 +659,7 @@ https://github.com/jsumners/alfred-emoji/issues</string>
   <key>variablesdontexport</key>
   <array/>
   <key>version</key>
-  <string>1.10.0</string>
+  <string>{{version}}</string>
   <key>webaddress</key>
   <string>https://github.com/jsumners/alfred-emoji</string>
 </dict>
