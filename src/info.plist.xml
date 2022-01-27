@@ -568,8 +568,6 @@ osascript -l JavaScript emoji.js "$query" autopaste 2&gt;&amp;1</string>
     <key>skin_tone</key>
     <string></string>
   </dict>
-  <key>variablesdontexport</key>
-  <array/>
   <key>version</key>
   <string>{{version}}</string>
   <key>webaddress</key>
