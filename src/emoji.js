@@ -3,7 +3,6 @@
 
 const search = require('./search')
 const { getRandomSkinTone } = require('./utils')
-const pasteByDefault = getenv('snippetapp')
 const skinTone = getSkinTone()
 
 function getenv (name) {
@@ -31,7 +30,8 @@ function getSkinTone () {
 // Note: In JXA, console.log writes to stderr instead of stdout
 function run (argv) {
   const query = argv[0]
-  const found = search(query, skinTone, pasteByDefault)
+  const operationType = getenv('snippetapp') ? 'snippet' : (argv[1] || 'clipboard')
+  const found = search(query, skinTone, operationType)
   console.log(JSON.stringify(found))
 }
 

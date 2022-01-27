@@ -17,14 +17,6 @@ const modifiers = [
 let skinTone
 let modifier
 
-let verb = 'Copy'
-let preposition = 'to clipboard'
-
-const resetWordsForPasteByDefault = () => {
-  verb = 'Paste'
-  preposition = 'as snippet'
-}
-
 const setSkinToneModifier = (tone) => {
   skinTone = tone
   modifier = skinTone ? modifiers[skinTone] : null
@@ -52,10 +44,25 @@ const getIconName = (emoji) => {
   return emoji.slug
 }
 
-const alfredItem = (emoji, char) => {
+const getSubtitleStrings = (operationType) => {
+  switch (operationType) {
+    case 'snippet':
+      return {verb: 'Paste', preposition: 'as snippet'}
+    case 'autopaste':
+      return {verb: 'Paste', preposition: 'into frontmost application'}
+    case 'clipboard':
+    default:
+      return {verb: 'Copy', preposition: 'to clipboard'}
+  }
+}
+
+const alfredItem = (emoji, char, operationType = 'clipboard') => {
   const modifiedEmoji = addModifier(emoji, char, modifier)
   const icon = getIconName(emoji)
   const name = emoji.name
+
+  const {verb, preposition} = getSubtitleStrings(operationType)
+
   return {
     uid: name,
     title: name,
@@ -80,15 +87,15 @@ const alfredItem = (emoji, char) => {
   }
 }
 
-const alfredItems = (chars) => {
+const alfredItems = (chars, operationType = 'clipboard') => {
   const items = []
   chars.forEach((char) => {
-    items.push(alfredItem(emojiData[char], char))
+    items.push(alfredItem(emojiData[char], char, operationType))
   })
   return { items }
 }
 
-const all = () => alfredItems(orderedEmoji)
+const all = (operationType = 'clipboard') => alfredItems(orderedEmoji, operationType)
 
 const libHasEmoji = (char, term) => {
   return emojiKeywords[char] &&
@@ -106,14 +113,12 @@ const matches = (terms) => {
 // :thumbs up: => ['thumbs', 'up']
 const parse = query => query.replace(/[:]/g, '').split(/\s+/)
 
-module.exports = function search (query, skinTone, pasteByDefault = false) {
-  if (pasteByDefault) resetWordsForPasteByDefault()
-
+module.exports = function search (query, skinTone, operationType = 'clipboard') {
   setSkinToneModifier(skinTone)
 
-  if (!query) return all()
+  if (!query) return all(operationType)
 
   const terms = parse(query)
 
-  return alfredItems(matches(terms))
+  return alfredItems(matches(terms), operationType)
 }
