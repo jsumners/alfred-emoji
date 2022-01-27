@@ -1,8 +1,18 @@
 'use strict'
 
-const emojilib = require('emojilib')
-const emojiNames = emojilib.ordered
-const modifiers = emojilib.fitzpatrick_scale_modifiers
+const emojiData = require('unicode-emoji-json')
+const emojiComponents = require('unicode-emoji-json/data-emoji-components')
+const orderedEmoji = require('unicode-emoji-json/data-ordered-emoji')
+const emojiKeywords = require('emojilib')
+
+// compatability layer:
+const modifiers = [
+  emojiComponents.light_skin_tone,
+  emojiComponents.medium_light_skin_tone,
+  emojiComponents.medium_skin_tone,
+  emojiComponents.medium_dark_skin_tone,
+  emojiComponents.dark_skin_tone
+]
 
 let skinTone
 let modifier
@@ -20,8 +30,8 @@ const setSkinToneModifier = (tone) => {
   modifier = skinTone ? modifiers[skinTone] : null
 }
 
-const addModifier = (emoji, modifier) => {
-  if (!modifier || !emoji.fitzpatrick_scale) return emoji.char
+const addModifier = (emoji, char, modifier) => {
+  if (!modifier || !emoji.skin_tone_support) return char
 
   /*
   * There are some emojis categorized as a sequence of emojis
@@ -31,20 +41,21 @@ const addModifier = (emoji, modifier) => {
   * https://emojipedia.org/emoji-zwj-sequence/
   */
 
-  const zwj = new RegExp('‍', 'g')
-  return emoji.char.match(zwj) ? emoji.char.replace(zwj, modifier + '‍') : emoji.char + modifier
+  const zwj = new RegExp('‍', 'g') // eslint-disable-line
+  return char.match(zwj) ? char.replace(zwj, modifier + '‍') : char + modifier
 }
 
-const getIconName = (emoji, name) => {
-  if (emoji.fitzpatrick_scale && skinTone && skinTone >= 0 && skinTone < 5) {
-    return `${name}_${skinTone}`
+const getIconName = (emoji) => {
+  if (emoji.skin_tone_support && skinTone && skinTone >= 0 && skinTone < 5) {
+    return `${emoji.slug}_${skinTone}`
   }
-  return name
+  return emoji.slug
 }
 
-const alfredItem = (emoji, name) => {
-  const modifiedEmoji = addModifier(emoji, modifier)
-  const icon = getIconName(emoji, name)
+const alfredItem = (emoji, char) => {
+  const modifiedEmoji = addModifier(emoji, char, modifier)
+  const icon = getIconName(emoji)
+  const name = emoji.name
 
   // No `uid` property otherwise Alfred ignores the ordering of the list and uses its own
   return {
@@ -54,35 +65,35 @@ const alfredItem = (emoji, name) => {
     autocomplete: name,
     icon: { path: `./icons/${icon}.png` },
     mods: {
+      // copy a code for the emoji, e.g. :thumbs_down:
       alt: {
-        subtitle: `${verb} ":${name}:" (${emoji.char}) ${preposition}`,
-        arg: `:${name}:`,
-        icon: { path: `./icons/${name}.png` }
+        subtitle: `${verb} ":${emoji.slug}:" (${char}) ${preposition}`,
+        arg: `:${emoji.slug}:`,
+        icon: { path: `./icons/${emoji.slug}.png` }
       },
+      // copy the default symbol for the emoji, without skin tones
       shift: {
-        subtitle: `${verb} "${emoji.char}" (${name}) ${preposition}`,
-        arg: emoji.char,
-        icon: { path: `./icons/${name}.png` }
+        subtitle: `${verb} "${char}" (${name}) ${preposition}`,
+        arg: char,
+        icon: { path: `./icons/${emoji.slug}.png` }
       }
     }
   }
 }
 
-const alfredItems = (names) => {
+const alfredItems = (chars) => {
   const items = []
-  names.forEach((name) => {
-    const emoji = emojilib.lib[name]
-    if (!emoji) return
-    items.push(alfredItem(emoji, name))
+  chars.forEach((char) => {
+    items.push(alfredItem(emojiData[char], char))
   })
   return { items }
 }
 
-const all = () => alfredItems(emojiNames)
+const all = () => alfredItems(orderedEmoji)
 
-const libHasEmoji = (name, term) => {
-  return emojilib.lib[name] &&
-    emojilib.lib[name].keywords.some((keyword) => keyword.includes(term))
+const libHasEmoji = (char, term) => {
+  return emojiKeywords[char] &&
+    emojiKeywords[char].some((keyword) => keyword.includes(term))
 }
 const matches = (terms) => {
   const emojiNameResults = [];

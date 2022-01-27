@@ -2,11 +2,10 @@
 
 const { test } = require('tap')
 const mock = require('mock-require')
-mock('emojilib', {
-  lib: require('./emojisMock.json'),
-  ordered: require('./orderedMock.json'),
-  fitzpatrick_scale_modifiers: ['🏻', '🏼', '🏽', '🏾', '🏿']
-})
+mock('unicode-emoji-json', './unicodeEmojiMock.json')
+mock('unicode-emoji-json/data-emoji-components', './unicodeEmojiComponentsMock.json')
+mock('unicode-emoji-json/data-ordered-emoji', './unicodeEmojiOrderedMock.json')
+mock('emojilib', './emojiKeywordsMock.json')
 
 const search = require('../src/search')
 
