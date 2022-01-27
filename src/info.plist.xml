@@ -29,7 +29,7 @@
         <key>modifiers</key>
         <integer>1048576</integer>
         <key>modifiersubtext</key>
-        <string>Paste {query} into frontmost application</string>
+        <string>Paste "{query}" into frontmost application</string>
         <key>vitoclose</key>
         <false/>
       </dict>
@@ -46,32 +46,6 @@
       <dict>
         <key>destinationuid</key>
         <string>E577A252-59CC-4971-9A6E-90F0C02DC35E</string>
-        <key>modifiers</key>
-        <integer>0</integer>
-        <key>modifiersubtext</key>
-        <string></string>
-        <key>vitoclose</key>
-        <false/>
-      </dict>
-    </array>
-    <key>216CB07A-AC3A-4FDF-8A5C-B05E6B78EF9D</key>
-    <array>
-      <dict>
-        <key>destinationuid</key>
-        <string>BDD62946-8D78-4375-AD5D-3C29519C6DFC</string>
-        <key>modifiers</key>
-        <integer>0</integer>
-        <key>modifiersubtext</key>
-        <string></string>
-        <key>vitoclose</key>
-        <false/>
-      </dict>
-    </array>
-    <key>271FA34A-06E8-4E60-B052-DD30D0FEE1F1</key>
-    <array>
-      <dict>
-        <key>destinationuid</key>
-        <string>032C2A56-C75D-4477-A473-48DD2349666D</string>
         <key>modifiers</key>
         <integer>0</integer>
         <key>modifiersubtext</key>
@@ -162,7 +136,7 @@
     <array>
       <dict>
         <key>destinationuid</key>
-        <string>271FA34A-06E8-4E60-B052-DD30D0FEE1F1</string>
+        <string>032C2A56-C75D-4477-A473-48DD2349666D</string>
         <key>modifiers</key>
         <integer>0</integer>
         <key>modifiersubtext</key>
@@ -174,19 +148,9 @@
         <key>destinationuid</key>
         <string>BDD62946-8D78-4375-AD5D-3C29519C6DFC</string>
         <key>modifiers</key>
-        <integer>524288</integer>
+        <integer>1048576</integer>
         <key>modifiersubtext</key>
-        <string></string>
-        <key>vitoclose</key>
-        <false/>
-      </dict>
-      <dict>
-        <key>destinationuid</key>
-        <string>216CB07A-AC3A-4FDF-8A5C-B05E6B78EF9D</string>
-        <key>modifiers</key>
-        <integer>0</integer>
-        <key>modifiersubtext</key>
-        <string></string>
+        <string>Copy "{query}" to clipboard</string>
         <key>vitoclose</key>
         <false/>
       </dict>
@@ -404,25 +368,6 @@ osascript -l JavaScript emoji.js "$query" 2&gt;&amp;1</string>
     <dict>
       <key>config</key>
       <dict>
-        <key>inputstring</key>
-        <string>{var:snippetapp}</string>
-        <key>matchcasesensitive</key>
-        <true/>
-        <key>matchmode</key>
-        <integer>0</integer>
-        <key>matchstring</key>
-        <string></string>
-      </dict>
-      <key>type</key>
-      <string>alfred.workflow.utility.filter</string>
-      <key>uid</key>
-      <string>271FA34A-06E8-4E60-B052-DD30D0FEE1F1</string>
-      <key>version</key>
-      <integer>1</integer>
-    </dict>
-    <dict>
-      <key>config</key>
-      <dict>
         <key>alfredfiltersresults</key>
         <false/>
         <key>alfredfiltersresultsmatchmode</key>
@@ -448,7 +393,7 @@ osascript -l JavaScript emoji.js "$query" 2&gt;&amp;1</string>
         <key>script</key>
         <string>query=$*
 
-osascript -l JavaScript emoji.js "$query" 2&gt;&amp;1</string>
+osascript -l JavaScript emoji.js "$query" autopaste 2&gt;&amp;1</string>
         <key>scriptargtype</key>
         <integer>1</integer>
         <key>scriptfile</key>
@@ -519,25 +464,6 @@ osascript -l JavaScript emoji.js "$query" 2&gt;&amp;1</string>
       <key>version</key>
       <integer>3</integer>
     </dict>
-    <dict>
-      <key>config</key>
-      <dict>
-        <key>inputstring</key>
-        <string>{var:snippetapp}</string>
-        <key>matchcasesensitive</key>
-        <true/>
-        <key>matchmode</key>
-        <integer>1</integer>
-        <key>matchstring</key>
-        <string></string>
-      </dict>
-      <key>type</key>
-      <string>alfred.workflow.utility.filter</string>
-      <key>uid</key>
-      <string>216CB07A-AC3A-4FDF-8A5C-B05E6B78EF9D</string>
-      <key>version</key>
-      <integer>1</integer>
-    </dict>
   </array>
   <key>readme</key>
   <string><![CDATA[
@@ -562,20 +488,6 @@ osascript -l JavaScript emoji.js "$query" 2&gt;&amp;1</string>
       <integer>270</integer>
       <key>ypos</key>
       <integer>125</integer>
-    </dict>
-    <key>216CB07A-AC3A-4FDF-8A5C-B05E6B78EF9D</key>
-    <dict>
-      <key>xpos</key>
-      <integer>450</integer>
-      <key>ypos</key>
-      <integer>570</integer>
-    </dict>
-    <key>271FA34A-06E8-4E60-B052-DD30D0FEE1F1</key>
-    <dict>
-      <key>xpos</key>
-      <integer>450</integer>
-      <key>ypos</key>
-      <integer>410</integer>
     </dict>
     <key>2A492741-D082-41A5-B397-66AAE833A788</key>
     <dict>
