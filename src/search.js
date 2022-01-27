@@ -45,8 +45,9 @@ const getIconName = (emoji, name) => {
 const alfredItem = (emoji, name) => {
   const modifiedEmoji = addModifier(emoji, modifier)
   const icon = getIconName(emoji, name)
+
+  // No `uid` property otherwise Alfred ignores the ordering of the list and uses its own
   return {
-    uid: name,
     title: name,
     subtitle: `${verb} "${modifiedEmoji}" (${name}) ${preposition}`,
     arg: modifiedEmoji,
@@ -84,11 +85,36 @@ const libHasEmoji = (name, term) => {
     emojilib.lib[name].keywords.some((keyword) => keyword.includes(term))
 }
 const matches = (terms) => {
-  return emojiNames.filter((name) => {
-    return terms.every((term) => {
-      return name.includes(term) || libHasEmoji(name, term)
-    })
-  })
+  const emojiNameResults = [];
+  const emojiKeywordResults = [];
+
+  for (const emojiName of emojiNames) {
+    let hasNameMatch = false;
+    let hasMatch = true;
+
+    for (const term of terms) {
+      if (emojiName.includes(term)) {
+        hasNameMatch = true;
+        continue;
+      } else if (!libHasEmoji(emojiName, term)) {
+        hasMatch = false;
+        break;
+      }
+    }
+
+    if (!hasMatch) {
+      continue;
+    }
+
+    if (hasNameMatch) {
+      emojiNameResults.push(emojiName);
+    } else {
+      emojiKeywordResults.push(emojiName);
+    }
+  }
+
+  // Prioritize emojis that were matched on the name rather than on keywords
+  return [...emojiNameResults, ...emojiKeywordResults]
 }
 
 // :thumbs up: => ['thumbs', 'up']

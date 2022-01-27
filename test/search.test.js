@@ -72,12 +72,6 @@ test('applies modifier if possible', (t) => {
   t.ok(Object.keys(found.items).length > 0)
 })
 
-test('enables uid', (t) => {
-  t.plan(1)
-  const found = search('grimacing')
-  t.ok(found.items[0].uid === 'grimacing')
-})
-
 test('enables autocomplete', (t) => {
   t.plan(1)
   const found = search('think')
