@@ -22,6 +22,10 @@ cd ..
 
 cp icons/beer_mug.png ./icon.png
 
+echo "Creating emoji pack ..."
+node ../lib/genpack.js
+cp ../src/emoji.pack .
+
 echo "Updating version ..."
 curVersion=$(node -e "console.log(require('${parentDir}/package.json').version)")
 sed -i '' 's/{{version}}/'${curVersion}'/' info.plist

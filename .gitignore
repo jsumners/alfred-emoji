@@ -1,5 +1,7 @@
 sandbox.js
 
+src/emoji.pack
+
 output/
 *.alfredworkflow
 *.sig
