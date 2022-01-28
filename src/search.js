@@ -2,21 +2,8 @@
 
 const emojiComponents = require('unicode-emoji-json/data-emoji-components')
 const orderedEmoji = require('unicode-emoji-json/data-ordered-emoji')
-const { decode: msgpackDecode, ExtensionCodec } = require('@msgpack/msgpack')
 
-const fs = require('fs')
-const path = require('path')
-const extensionCodec = new ExtensionCodec()
-const MAP_EXT_TYPE = 1 // Any in 0-127
-extensionCodec.register({
-  type: MAP_EXT_TYPE,
-  decode: (data) => {
-    const array = msgpackDecode(data)
-    return new Map(array)
-  }
-})
-const encodedData = fs.readFileSync(path.join(__dirname, 'emoji.pack'))
-const emojiData = msgpackDecode(encodedData, { extensionCodec })
+const emojiData = require('./emoji.pack')()
 const { keywords: emojiKeywords, emoji: emojiInfo } = emojiData
 
 // compatability layer:
@@ -104,10 +91,6 @@ const alfredItems = (chars) => {
 
 const all = () => alfredItems(orderedEmoji)
 
-const libHasEmoji = (char, term) => {
-  return emojiKeywords[term] &&
-    emojiKeywords[char].some((keyword) => keyword.includes(term))
-}
 const matches = (terms) => {
   const result = []
   for (const term of terms) {
@@ -116,12 +99,6 @@ const matches = (terms) => {
     }
   }
   return result
-  // return orderedEmoji.filter((char) => {
-  //   const name = emojiData[char].name
-  //   return terms.every((term) => {
-  //     return name.includes(term) || libHasEmoji(char, term)
-  //   })
-  // })
 }
 
 // :thumbs up: => ['thumbs', 'up']
