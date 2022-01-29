@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  mode: 'none',
+  mode: 'production',
   entry: './src/emoji.js',
   target: 'web',
   resolve: {
