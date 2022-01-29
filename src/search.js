@@ -1,13 +1,12 @@
 'use strict'
 
-const emojiComponents = require('unicode-emoji-json/data-emoji-components')
-const orderedEmoji = require('unicode-emoji-json/data-ordered-emoji')
-
 const emojiData = require('./unpack-emoji')()
 const {
   keywords: emojiKeywords,
   emoji: emojiInfo,
-  searchTerms
+  searchTerms,
+  orderedEmoji,
+  emojiComponents
 } = emojiData
 
 // compatability layer:

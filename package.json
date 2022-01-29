@@ -18,17 +18,17 @@
     "test"
   ],
   "dependencies": {
-    "@msgpack/msgpack": "^2.7.1",
-    "emojilib": "^3.0.2",
-    "fontkit": "^1.8.1",
-    "unicode-emoji-json": "^0.3.0"
+    "@msgpack/msgpack": "^2.7.1"
   },
   "devDependencies": {
     "buffer": "^6.0.3",
+    "emojilib": "^3.0.2",
+    "fontkit": "^1.8.1",
     "pre-commit": "^1.2.2",
     "snazzy": "^9.0.0",
     "standard": "^16.0.4",
     "tap": "^15.1.6",
+    "unicode-emoji-json": "^0.3.0",
     "webpack": "^5.67.0",
     "webpack-cli": "^4.9.2"
   }
