@@ -3,8 +3,12 @@
 const emojiComponents = require('unicode-emoji-json/data-emoji-components')
 const orderedEmoji = require('unicode-emoji-json/data-ordered-emoji')
 
-const emojiData = require('./emoji.pack')()
-const { keywords: emojiKeywords, emoji: emojiInfo } = emojiData
+const emojiData = require('./unpack-emoji')()
+const {
+  keywords: emojiKeywords,
+  emoji: emojiInfo,
+  searchTerms
+} = emojiData
 
 // compatability layer:
 const modifiers = [
@@ -54,6 +58,12 @@ const getIconName = (emoji) => {
 }
 
 const alfredItem = (emoji, char) => {
+  if (emoji === undefined) {
+    // Can happen when `char` references an emoji the system does not
+    // recognize. This happens with newer Unicode data sets being used on
+    // older macOS releases.
+    return
+  }
   const modifiedEmoji = addModifier(emoji, char, modifier)
   const icon = getIconName(emoji)
   const name = emoji.name
@@ -96,9 +106,14 @@ const matches = (terms) => {
   for (const term of terms) {
     if (emojiKeywords.has(term)) {
       Array.prototype.push.apply(result, emojiKeywords.get(term))
+      continue
     }
+    const foundTerms = searchTerms.filter(searchTerm => searchTerm.includes(term))
+    foundTerms.forEach(foundTerm => {
+      Array.prototype.push.apply(result, emojiKeywords.get(foundTerm))
+    })
   }
-  return result
+  return new Set(result)
 }
 
 // :thumbs up: => ['thumbs', 'up']

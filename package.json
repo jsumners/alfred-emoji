@@ -6,6 +6,7 @@
     "build": "./build.sh",
     "genpack": "node lib/genpack.js",
     "load": "npm run build && open alfred-emoji.alfredworkflow",
+    "pretest": "npm run genpack",
     "test": "tap 'test/**/*.test.js' -R terse",
     "test:watch": "npm test -- --watch --no-coverage-report",
     "test-ci": "tap --cov 'test/**/*.test.js' -R terse",
@@ -19,13 +20,11 @@
   "dependencies": {
     "@msgpack/msgpack": "^2.7.1",
     "emojilib": "^3.0.2",
-    "fontkit": "^1.7.7",
+    "fontkit": "^1.8.1",
     "unicode-emoji-json": "^0.3.0"
   },
   "devDependencies": {
-    "mock-require": "^3.0.3",
-    "node-polyfill-webpack-plugin": "^1.1.4",
-    "path-browserify": "^1.0.1",
+    "buffer": "^6.0.3",
     "pre-commit": "^1.2.2",
     "snazzy": "^9.0.0",
     "standard": "^16.0.4",

@@ -24,7 +24,6 @@ cp icons/beer_mug.png ./icon.png
 
 echo "Creating emoji pack ..."
 node ../lib/genpack.js
-cp ../src/emoji.pack.js .
 
 echo "Updating version ..."
 curVersion=$(node -e "console.log(require('${parentDir}/package.json').version)")
