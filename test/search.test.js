@@ -100,7 +100,7 @@ test('finds "open book"', (t) => {
 test('finds "book open"', (t) => {
   t.plan(1)
   const found = search('book open')
-  t.ok(found.items[0].title === 'open book')
+  t.equal(found.items.filter(i => i.title === 'open book').length, 1)
 })
 
 test('finds "plant nature"', (t) => {
@@ -169,4 +169,16 @@ test('finds "unicorn" (ignore "random" skin tone)', (t) => {
   t.plan(1)
   const found = search('unicorn', 'random')
   t.ok(found.items[0].arg === '🦄')
+})
+
+test('finds multiple "wink" emoji', (t) => {
+  t.plan(1)
+  const found = search('wink')
+  t.equal(found.items.length, 2)
+})
+
+test('finds 👨‍👩‍👦', (t) => {
+  t.plan(1)
+  const found = search('family')
+  t.equal(found.items.filter(i => i.title === 'family man, woman, boy').length, 1)
 })

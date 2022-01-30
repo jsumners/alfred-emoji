@@ -1,6 +1,6 @@
 'use strict'
 
-const emojiData = require('./unpack-emoji')()
+const emojiData = require('./emoji.pack.json')
 const {
   keywords: emojiKeywords,
   emoji: emojiInfo,
@@ -56,16 +56,16 @@ const getIconName = (emoji) => {
   return emoji.slug
 }
 
-const alfredItem = (emoji, char) => {
-  if (emoji === undefined) {
+const alfredItem = (emojiDetails, emojiSymbol) => {
+  if (emojiDetails === undefined) {
     // Can happen when `char` references an emoji the system does not
     // recognize. This happens with newer Unicode data sets being used on
     // older macOS releases.
     return
   }
-  const modifiedEmoji = addModifier(emoji, char, modifier)
-  const icon = getIconName(emoji)
-  const name = emoji.name
+  const modifiedEmoji = addModifier(emojiDetails, emojiSymbol, modifier)
+  const icon = getIconName(emojiDetails)
+  const name = emojiDetails.name
   return {
     uid: name,
     title: name,
@@ -76,15 +76,15 @@ const alfredItem = (emoji, char) => {
     mods: {
       // copy a code for the emoji, e.g. :thumbs_down:
       alt: {
-        subtitle: `${verb} ":${emoji.slug}:" (${char}) ${preposition}`,
-        arg: `:${emoji.slug}:`,
-        icon: { path: `./icons/${emoji.slug}.png` }
+        subtitle: `${verb} ":${emojiDetails.slug}:" (${emojiSymbol}) ${preposition}`,
+        arg: `:${emojiDetails.slug}:`,
+        icon: { path: `./icons/${emojiDetails.slug}.png` }
       },
       // copy the default symbol for the emoji, without skin tones
       shift: {
-        subtitle: `${verb} "${char}" (${name}) ${preposition}`,
-        arg: char,
-        icon: { path: `./icons/${emoji.slug}.png` }
+        subtitle: `${verb} "${emojiSymbol}" (${name}) ${preposition}`,
+        arg: emojiSymbol,
+        icon: { path: `./icons/${emojiDetails.slug}.png` }
       }
     }
   }
@@ -93,7 +93,7 @@ const alfredItem = (emoji, char) => {
 const alfredItems = (chars) => {
   const items = []
   chars.forEach((char) => {
-    items.push(alfredItem(emojiInfo.get(char), char))
+    items.push(alfredItem(emojiInfo[char], char))
   })
   return { items }
 }
@@ -103,13 +103,9 @@ const all = () => alfredItems(orderedEmoji)
 const matches = (terms) => {
   const result = []
   for (const term of terms) {
-    if (emojiKeywords.has(term)) {
-      Array.prototype.push.apply(result, emojiKeywords.get(term))
-      continue
-    }
     const foundTerms = searchTerms.filter(searchTerm => searchTerm.includes(term))
     foundTerms.forEach(foundTerm => {
-      Array.prototype.push.apply(result, emojiKeywords.get(foundTerm))
+      Array.prototype.push.apply(result, emojiKeywords[foundTerm])
     })
   }
   return new Set(result)
