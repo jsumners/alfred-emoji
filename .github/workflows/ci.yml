@@ -8,27 +8,14 @@ on:
 
 jobs:
   macosx:
-    runs-on: macos-10.15
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v2
     - run: npm install
     - run: npm test
     - run: ./build.sh
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v2
       with:
-        name: alfred-emoji-macosx.alfredworkflow
+        name: alfred-emoji.alfredworkflow
         path: alfred-emoji.alfredworkflow
-
-  # macos11:
-  #   runs-on: macos-11.0
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - uses: actions/setup-node@v1
-  #   - run: npm install
-  #   - run: npm test
-  #   - run: ./build.sh
-  #   - uses: actions/upload-artifact@v1
-  #     with:
-  #       name: alfred-emoji-macos11.alfredworkflow
-  #       path: alfred-emoji.alfredworkflow
