@@ -93,7 +93,7 @@ const alfredItem = (emoji, char) => {
 const alfredItems = (chars) => {
   const items = []
   chars.forEach((char) => {
-    items.push(alfredItem(emojiInfo.get(char), char))
+    items.push(alfredItem(emojiInfo[char], char))
   })
   return { items }
 }
@@ -103,13 +103,9 @@ const all = () => alfredItems(orderedEmoji)
 const matches = (terms) => {
   const result = []
   for (const term of terms) {
-    if (emojiKeywords.has(term)) {
-      Array.prototype.push.apply(result, emojiKeywords.get(term))
-      continue
-    }
     const foundTerms = searchTerms.filter(searchTerm => searchTerm.includes(term))
     foundTerms.forEach(foundTerm => {
-      Array.prototype.push.apply(result, emojiKeywords.get(foundTerm))
+      Array.prototype.push.apply(result, emojiKeywords[foundTerm])
     })
   }
   return new Set(result)
