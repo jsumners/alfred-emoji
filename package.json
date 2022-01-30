@@ -17,11 +17,8 @@
     "lint",
     "test"
   ],
-  "dependencies": {
-    "@msgpack/msgpack": "^2.7.1"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "buffer": "^6.0.3",
     "emojilib": "^3.0.2",
     "fontkit": "^1.8.1",
     "pre-commit": "^1.2.2",

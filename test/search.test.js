@@ -176,3 +176,9 @@ test('finds multiple "wink" emoji', (t) => {
   const found = search('wink')
   t.equal(found.items.length, 2)
 })
+
+test('finds 👨‍👩‍👦', (t) => {
+  t.plan(1)
+  const found = search('family')
+  t.equal(found.items.filter(i => i.title === 'family man, woman, boy').length, 1)
+})

@@ -1,6 +1,6 @@
 sandbox.js
 
-src/emoji.pack.js
+src/emoji.pack.json
 
 output/
 *.alfredworkflow
