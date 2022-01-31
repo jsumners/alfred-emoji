@@ -1,12 +1,6 @@
 'use strict'
 
 const { test } = require('tap')
-const mock = require('mock-require')
-mock('unicode-emoji-json', './unicodeEmojiMock.json')
-mock('unicode-emoji-json/data-emoji-components', './unicodeEmojiComponentsMock.json')
-mock('unicode-emoji-json/data-ordered-emoji', './unicodeEmojiOrderedMock.json')
-mock('emojilib', './emojiKeywordsMock.json')
-
 const search = require('../src/search')
 
 test('finds "thumbs up"', (t) => {
@@ -74,19 +68,19 @@ test('applies modifier if possible', (t) => {
 test('enables uid', (t) => {
   t.plan(1)
   const found = search('grimacing')
-  t.ok(found.items[0].uid === 'grimacing')
+  t.ok(found.items[0].uid === 'grimacing face')
 })
 
 test('enables autocomplete', (t) => {
   t.plan(1)
   const found = search('think')
-  t.ok(found.items[0].autocomplete === 'thinking')
+  t.ok(found.items[0].autocomplete === 'thinking face')
 })
 
 test('enables alt-modifier', (t) => {
   t.plan(1)
   const found = search('hear_no_evil')
-  t.ok(found.items[0].mods.alt.arg === ':hear_no_evil:')
+  t.ok(found.items[0].mods.alt.arg === ':hear_no_evil_monkey:')
 })
 
 test('unique results', (t) => {
@@ -100,13 +94,13 @@ test('unique results', (t) => {
 test('finds "open book"', (t) => {
   t.plan(1)
   const found = search('open book')
-  t.ok(found.items[0].title === 'open_book')
+  t.equal(found.items.filter(i => i.title === 'open book').length, 1)
 })
 
 test('finds "book open"', (t) => {
   t.plan(1)
   const found = search('book open')
-  t.ok(found.items[0].title === 'open_book')
+  t.equal(found.items.filter(i => i.title === 'open book').length, 1)
 })
 
 test('finds "plant nature"', (t) => {
@@ -175,4 +169,16 @@ test('finds "unicorn" (ignore "random" skin tone)', (t) => {
   t.plan(1)
   const found = search('unicorn', 'random')
   t.ok(found.items[0].arg === '🦄')
+})
+
+test('finds multiple "wink" emoji', (t) => {
+  t.plan(1)
+  const found = search('wink')
+  t.equal(found.items.length, 2)
+})
+
+test('finds 👨‍👩‍👦', (t) => {
+  t.plan(1)
+  const found = search('family')
+  t.equal(found.items.filter(i => i.title === 'family man, woman, boy').length, 1)
 })

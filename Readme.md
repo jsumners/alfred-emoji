@@ -7,6 +7,17 @@ them to the clipboard 🤘.
 
 ![screenshot](images/screenshot.png)
 
+> ## Note About Available Emoji
+>
+> The workflow is built against the latest available macOS within the GitHub
+> continuous integration infrastructure. This means some emoji may be missing
+> until the GitHub infrastructure is updated. It also means that some emoji
+> may be present in the workflow that do not exist on your system if your
+> system is running an earlier version of macOS.
+>
+> If this is not desired, follow the instructions below for generating the
+> workflow on your own system.
+
 ## Installing the Workflow
 
 [Download the provided Alfred workflow][releases].

@@ -1,9 +1,13 @@
 'use strict'
 
-const emojiData = require('unicode-emoji-json')
-const emojiComponents = require('unicode-emoji-json/data-emoji-components')
-const orderedEmoji = require('unicode-emoji-json/data-ordered-emoji')
-const emojiKeywords = require('emojilib')
+const emojiData = require('./emoji.pack.json')
+const {
+  keywords: emojiKeywords,
+  emoji: emojiInfo,
+  searchTerms,
+  orderedEmoji,
+  emojiComponents
+} = emojiData
 
 // compatability layer:
 const modifiers = [
@@ -56,10 +60,16 @@ const getSubtitleStrings = (operationType) => {
   }
 }
 
-const alfredItem = (emoji, char, operationType = 'clipboard') => {
-  const modifiedEmoji = addModifier(emoji, char, modifier)
-  const icon = getIconName(emoji)
-  const name = emoji.name
+const alfredItem = (emojiDetails, emojiSymbol, operationType = 'clipboard') => {
+  if (emojiDetails === undefined) {
+    // Can happen when `char` references an emoji the system does not
+    // recognize. This happens with newer Unicode data sets being used on
+    // older macOS releases.
+    return
+  }
+  const modifiedEmoji = addModifier(emojiDetails, emojiSymbol, modifier)
+  const icon = getIconName(emojiDetails)
+  const name = emojiDetails.name
 
   const {verb, preposition} = getSubtitleStrings(operationType)
 
@@ -73,15 +83,15 @@ const alfredItem = (emoji, char, operationType = 'clipboard') => {
     mods: {
       // copy a code for the emoji, e.g. :thumbs_down:
       alt: {
-        subtitle: `${verb} ":${emoji.slug}:" (${char}) ${preposition}`,
-        arg: `:${emoji.slug}:`,
-        icon: { path: `./icons/${emoji.slug}.png` }
+        subtitle: `${verb} ":${emojiDetails.slug}:" (${emojiSymbol}) ${preposition}`,
+        arg: `:${emojiDetails.slug}:`,
+        icon: { path: `./icons/${emojiDetails.slug}.png` }
       },
       // copy the default symbol for the emoji, without skin tones
       shift: {
-        subtitle: `${verb} "${char}" (${name}) ${preposition}`,
-        arg: char,
-        icon: { path: `./icons/${emoji.slug}.png` }
+        subtitle: `${verb} "${emojiSymbol}" (${name}) ${preposition}`,
+        arg: emojiSymbol,
+        icon: { path: `./icons/${emojiDetails.slug}.png` }
       }
     }
   }
@@ -90,24 +100,22 @@ const alfredItem = (emoji, char, operationType = 'clipboard') => {
 const alfredItems = (chars, operationType = 'clipboard') => {
   const items = []
   chars.forEach((char) => {
-    items.push(alfredItem(emojiData[char], char, operationType))
+    items.push(alfredItem(emojiInfo[char], char, operationType))
   })
   return { items }
 }
 
 const all = (operationType = 'clipboard') => alfredItems(orderedEmoji, operationType)
 
-const libHasEmoji = (char, term) => {
-  return emojiKeywords[char] &&
-    emojiKeywords[char].some((keyword) => keyword.includes(term))
-}
 const matches = (terms) => {
-  return orderedEmoji.filter((char) => {
-    const name = emojiData[char].name
-    return terms.every((term) => {
-      return name.includes(term) || libHasEmoji(char, term)
+  const result = []
+  for (const term of terms) {
+    const foundTerms = searchTerms.filter(searchTerm => searchTerm.includes(term))
+    foundTerms.forEach(foundTerm => {
+      Array.prototype.push.apply(result, emojiKeywords[foundTerm])
     })
-  })
+  }
+  return new Set(result)
 }
 
 // :thumbs up: => ['thumbs', 'up']
