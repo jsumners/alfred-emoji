@@ -75,7 +75,8 @@ Trigger the workflow with either a custom hotkey or a custom snippet.
 
 1. Clone this repository
 2. `npm install`
-3. `npm run build`
+3. `npm run genpack`
+4. `npm run build`
 
 ## Loading the Workflow into Alfred
 
