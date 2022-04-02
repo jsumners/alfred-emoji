@@ -1,15 +1,11 @@
 #!/bin/bash
-
-PWD=$(pwd)
+set -e
 
 # this script's parent directory
 cd $(dirname $0)
 parentDir=$(pwd)
 
-cd ${PWD}
-
-npm run webpack
-
+[ ! -d output ] && mkdir output
 cd output
 
 cp ${parentDir}/src/info.plist.xml ./info.plist
@@ -19,10 +15,17 @@ echo "Generating icons ..."
 cd icons
 node ${parentDir}/lib/genicons.js
 cd ..
-
 cp icons/beer_mug.png ./icon.png
 
+echo "Creating emoji pack ..."
+cd ${parentDir}
+node ./lib/genpack.js
+
+echo "Generating jxa compatible source ..."
+npm run webpack
+
 echo "Updating version ..."
+cd output
 curVersion=$(node -e "console.log(require('${parentDir}/package.json').version)")
 sed -i '' 's/{{version}}/'${curVersion}'/' info.plist
 

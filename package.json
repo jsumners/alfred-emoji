@@ -1,10 +1,12 @@
 {
-  "version": "1.10.0",
+  "version": "1.11.1",
   "scripts": {
     "webpack": "webpack",
     "clean": "rm -f *.alfredworkflow; rm -rf output/*",
     "build": "./build.sh",
+    "genpack": "node lib/genpack.js",
     "load": "npm run build && open alfred-emoji.alfredworkflow",
+    "pretest": "npm run genpack",
     "test": "tap 'test/**/*.test.js' -R terse",
     "test:watch": "npm test -- --watch --no-coverage-report",
     "test-ci": "tap --cov 'test/**/*.test.js' -R terse",
@@ -15,17 +17,15 @@
     "lint",
     "test"
   ],
-  "dependencies": {
-    "emojilib": "^3.0.2",
-    "fontkit": "^1.7.7",
-    "unicode-emoji-json": "^0.3.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "mock-require": "^3.0.3",
+    "emojilib": "^3.0.2",
+    "fontkit": "^1.8.1",
     "pre-commit": "^1.2.2",
     "snazzy": "^9.0.0",
     "standard": "^16.0.4",
     "tap": "^15.1.6",
+    "unicode-emoji-json": "^0.3.0",
     "webpack": "^5.67.0",
     "webpack-cli": "^4.9.2"
   }

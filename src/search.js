@@ -1,9 +1,12 @@
 'use strict'
 
-const emojiData = require('unicode-emoji-json')
-const emojiComponents = require('unicode-emoji-json/data-emoji-components')
-const orderedEmoji = require('unicode-emoji-json/data-ordered-emoji')
-const emojiKeywords = require('emojilib')
+const emojiData = require('./emoji.pack.json')
+const {
+  emoji: emojiInfo,
+  searchTerms,
+  orderedEmoji,
+  emojiComponents
+} = emojiData
 
 // compatability layer:
 const modifiers = [
@@ -52,10 +55,16 @@ const getIconName = (emoji) => {
   return emoji.slug
 }
 
-const alfredItem = (emoji, char) => {
-  const modifiedEmoji = addModifier(emoji, char, modifier)
-  const icon = getIconName(emoji)
-  const name = emoji.name
+const alfredItem = (emojiDetails, emojiSymbol) => {
+  if (emojiDetails === undefined) {
+    // Can happen when `char` references an emoji the system does not
+    // recognize. This happens with newer Unicode data sets being used on
+    // older macOS releases.
+    return
+  }
+  const modifiedEmoji = addModifier(emojiDetails, emojiSymbol, modifier)
+  const icon = getIconName(emojiDetails)
+  const name = emojiDetails.name
 
   // No `uid` property otherwise Alfred ignores the ordering of the list and uses its own
   return {
@@ -67,15 +76,15 @@ const alfredItem = (emoji, char) => {
     mods: {
       // copy a code for the emoji, e.g. :thumbs_down:
       alt: {
-        subtitle: `${verb} ":${emoji.slug}:" (${char}) ${preposition}`,
-        arg: `:${emoji.slug}:`,
-        icon: { path: `./icons/${emoji.slug}.png` }
+        subtitle: `${verb} ":${emojiDetails.slug}:" (${emojiSymbol}) ${preposition}`,
+        arg: `:${emojiDetails.slug}:`,
+        icon: { path: `./icons/${emojiDetails.slug}.png` }
       },
       // copy the default symbol for the emoji, without skin tones
       shift: {
-        subtitle: `${verb} "${char}" (${name}) ${preposition}`,
-        arg: char,
-        icon: { path: `./icons/${emoji.slug}.png` }
+        subtitle: `${verb} "${emojiSymbol}" (${name}) ${preposition}`,
+        arg: emojiSymbol,
+        icon: { path: `./icons/${emojiDetails.slug}.png` }
       }
     }
   }
@@ -84,43 +93,42 @@ const alfredItem = (emoji, char) => {
 const alfredItems = (chars) => {
   const items = []
   chars.forEach((char) => {
-    items.push(alfredItem(emojiData[char], char))
+    items.push(alfredItem(emojiInfo[char], char))
   })
   return { items }
 }
 
 const all = () => alfredItems(orderedEmoji)
 
-const libHasEmoji = (char, term) => {
-  return emojiKeywords[char] &&
-    emojiKeywords[char].some((keyword) => keyword.includes(term))
-}
 const matches = (terms) => {
-  const emojiNameResults = [];
-  const emojiKeywordResults = [];
+  const emojiNameResults = new Set()
+  const emojiKeywordResults = new Set()
 
-  for (const emojiName of emojiNames) {
-    let hasNameMatch = false;
-    let hasMatch = true;
+  for (const [emojiText, emoji] of Object.entries(emojiInfo)) {
+    const emojiName = emoji.name
+
+    let hasNameMatch = false
+    let hasMatch = true
 
     for (const term of terms) {
       if (emojiName.includes(term)) {
-        hasNameMatch = true;
-        continue;
-      } else if (!libHasEmoji(emojiName, term)) {
-        hasMatch = false;
-        break;
+        hasNameMatch = true
+        continue
+      } else if (!searchTerms.some(searchTerm => searchTerm.includes(term))) {
+        hasMatch = false
+        // And operator on the terms.
+        break
       }
     }
 
     if (!hasMatch) {
-      continue;
+      continue
     }
 
     if (hasNameMatch) {
-      emojiNameResults.push(emojiName);
+      emojiNameResults.add(emojiText)
     } else {
-      emojiKeywordResults.push(emojiName);
+      emojiKeywordResults.add(emojiText)
     }
   }
 
