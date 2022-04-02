@@ -3,7 +3,7 @@
 const emojiData = require('./emoji.pack.json')
 const {
   emoji: emojiInfo,
-  searchTerms,
+  emojiKeywords,
   orderedEmoji,
   emojiComponents
 } = emojiData
@@ -114,7 +114,7 @@ const matches = (terms) => {
       if (emojiName.includes(term)) {
         hasNameMatch = true
         continue
-      } else if (!searchTerms.some(searchTerm => searchTerm.includes(term))) {
+      } else if (!emojiKeywords[emojiText].some(keyword => keyword.includes(term))) {
         hasMatch = false
         // And operator on the terms.
         break
