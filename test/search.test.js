@@ -1,7 +1,7 @@
 'use strict'
 
 const { test } = require('tap')
-const search = require('../src/search')
+const { search, all, getSubtitleStrings, alfredItems, alfredItem } = require('../src/search')
 
 test('finds "thumbs up"', (t) => {
   t.plan(1)
@@ -181,4 +181,46 @@ test('finds 👨‍👩‍👦', (t) => {
   t.plan(1)
   const found = search('family')
   t.equal(found.items.filter(i => i.title === 'family man, woman, boy').length, 1)
+})
+
+test('does not throw when emojiDetails is undefined', (t) => {
+  t.plan(1)
+  t.equal(alfredItem(undefined), undefined)
+})
+
+test('alfredItems() does not throw when operationType is omitted', (t) => {
+  t.plan(0)
+  alfredItems(['😀'])
+})
+
+test('all() does not throw when operationType is omitted', (t) => {
+  t.plan(0)
+  all()
+})
+
+test('has subtitle for snippet', (t) => {
+  t.plan(4)
+  const { verb, preposition } = getSubtitleStrings('snippet')
+  t.not(verb, undefined)
+  t.not(verb, null)
+  t.not(preposition, undefined)
+  t.not(preposition, null)
+})
+
+test('has subtitle for autopaste', (t) => {
+  t.plan(4)
+  const { verb, preposition } = getSubtitleStrings('autopaste')
+  t.not(verb, undefined)
+  t.not(verb, null)
+  t.not(preposition, undefined)
+  t.not(preposition, null)
+})
+
+test('has subtitle for clipboard', (t) => {
+  t.plan(4)
+  const { verb, preposition } = getSubtitleStrings('clipboard')
+  t.not(verb, undefined)
+  t.not(verb, null)
+  t.not(preposition, undefined)
+  t.not(preposition, null)
 })

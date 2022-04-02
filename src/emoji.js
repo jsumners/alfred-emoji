@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 'use strict'
 
-const search = require('./search')
+const { search } = require('./search')
 const { getRandomSkinTone } = require('./utils')
 const skinTone = getSkinTone()
 

@@ -51,12 +51,12 @@ const getIconName = (emoji) => {
 const getSubtitleStrings = (operationType) => {
   switch (operationType) {
     case 'snippet':
-      return {verb: 'Paste', preposition: 'as snippet'}
+      return { verb: 'Paste', preposition: 'as snippet' }
     case 'autopaste':
-      return {verb: 'Paste', preposition: 'into frontmost application'}
+      return { verb: 'Paste', preposition: 'into frontmost application' }
     case 'clipboard':
     default:
-      return {verb: 'Copy', preposition: 'to clipboard'}
+      return { verb: 'Copy', preposition: 'to clipboard' }
   }
 }
 
@@ -71,7 +71,7 @@ const alfredItem = (emojiDetails, emojiSymbol, operationType = 'clipboard') => {
   const icon = getIconName(emojiDetails)
   const name = emojiDetails.name
 
-  const {verb, preposition} = getSubtitleStrings(operationType)
+  const { verb, preposition } = getSubtitleStrings(operationType)
 
   return {
     uid: name,
@@ -100,7 +100,8 @@ const alfredItem = (emojiDetails, emojiSymbol, operationType = 'clipboard') => {
 const alfredItems = (chars, operationType = 'clipboard') => {
   const items = []
   chars.forEach((char) => {
-    items.push(alfredItem(emojiInfo[char], char, operationType))
+    const item = alfredItem(emojiInfo[char], char, operationType)
+    items.push(item)
   })
   return { items }
 }
@@ -121,7 +122,7 @@ const matches = (terms) => {
 // :thumbs up: => ['thumbs', 'up']
 const parse = query => query.replace(/[:]/g, '').split(/\s+/)
 
-module.exports = function search (query, skinTone, operationType = 'clipboard') {
+function search (query, skinTone, operationType = 'clipboard') {
   setSkinToneModifier(skinTone)
 
   if (!query) return all(operationType)
@@ -130,3 +131,5 @@ module.exports = function search (query, skinTone, operationType = 'clipboard') 
 
   return alfredItems(matches(terms), operationType)
 }
+
+module.exports = { search, all, alfredItems, alfredItem, getSubtitleStrings }
