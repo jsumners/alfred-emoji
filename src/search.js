@@ -85,6 +85,12 @@ const alfredItem = (emojiDetails, emojiSymbol) => {
         subtitle: `${verb} "${emojiSymbol}" (${name}) ${preposition}`,
         arg: emojiSymbol,
         icon: { path: `./icons/${emojiDetails.slug}.png` }
+      },
+      // copy the codepoint for the emoji
+      ctrl: {
+        subtitle: `${verb} "U+${emojiDetails.codepoint}" (${emojiSymbol}) ${preposition}`,
+        arg: `U+${emojiDetails.codepoint}`,
+        icon: { path: `./icons/${emojiDetails.slug}.png` }
       }
     }
   }

@@ -10,6 +10,8 @@ alt + return (⌥↵) : Copy the code of the selected emoji (e.g. ":rofl:") to y
 
 cmd + return (⌘↵) : Paste the symbol of the selected emoji (e.g. 🤣) directly to your frontmost application.
 
+ctrl + return (⌃↵): Copy the codepoint of the selected emoji (e.g. "U+1F923") to your clipboard.
+
 ## Automatic Updates
 
 This workflow will automatically check for updates at most once per day. If a new release is found, it automatically downloads and installs the latest version of the workflow. All downloads come directly from official GitHub releases.
