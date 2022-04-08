@@ -182,3 +182,15 @@ test('finds 👨‍👩‍👦', (t) => {
   const found = search('family')
   t.equal(found.items.filter(i => i.title === 'family man, woman, boy').length, 1)
 })
+
+test('enables ctrl-modifier', (t) => {
+  t.plan(1)
+  const found = search('hear_no_evil')
+  t.ok(found.items[0].mods.ctrl.arg === 'U+1F649')
+})
+
+test('pads codepoint with zeroes if needed', (t) => {
+  t.plan(1)
+  const found = search('5')
+  t.ok(found.items[0].mods.ctrl.arg === 'U+0035')
+})
