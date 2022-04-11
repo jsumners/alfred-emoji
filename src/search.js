@@ -125,3 +125,7 @@ module.exports = function search (query, skinTone, pasteByDefault = false) {
 
   return alfredItems(matches(terms))
 }
+
+module.exports.internals = {
+  alfredItem
+}

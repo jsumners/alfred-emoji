@@ -182,3 +182,9 @@ test('finds 👨‍👩‍👦', (t) => {
   const found = search('family')
   t.equal(found.items.filter(i => i.title === 'family man, woman, boy').length, 1)
 })
+
+test('handles emoji the system does not recognize', (t) => {
+  t.plan(1)
+  const item = search.internals.alfredItem(undefined, '🤷🏼')
+  t.equal(item, undefined)
+})
