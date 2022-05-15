@@ -37,6 +37,9 @@ your clipboard.
 Press <kbd>alt</kbd>+<kbd>return</kbd> (⌥↵): **Copy the code** of the selected emoji)
 (e.g. `:rofl:`) to your clipboard.
 
+Press <kbd>ctrl</kbd>+<kbd>return</kbd> (⌃↵): **Copy the codepoint** **of** the selected emoji)
+(e.g. `U+1F923`) to your clipboard.
+
 Press <kbd>shift</kbd>+<kbd>return</kbd> (⇧↵): **Copy the default symbol** of the selected emoji)
 (e.g. 🤣) to your clipboard without skin tone modifier.
 

@@ -188,3 +188,15 @@ test('handles emoji the system does not recognize', (t) => {
   const item = search.internals.alfredItem(undefined, '🤷🏼')
   t.equal(item, undefined)
 })
+
+test('enables ctrl-modifier', (t) => {
+  t.plan(1)
+  const found = search('hear_no_evil')
+  t.ok(found.items[0].mods.ctrl.arg === 'U+1F649')
+})
+
+test('pads codepoint with zeroes if needed', (t) => {
+  t.plan(1)
+  const found = search('5')
+  t.ok(found.items[0].mods.ctrl.arg === 'U+0035')
+})
