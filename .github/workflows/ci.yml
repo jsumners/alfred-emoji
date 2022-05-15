@@ -10,12 +10,12 @@ jobs:
   macosx:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/checkout@main
+    - uses: actions/setup-node@main
     - run: npm install
     - run: npm test
     - run: ./build.sh
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@main
       with:
         name: alfred-emoji.alfredworkflow
         path: alfred-emoji.alfredworkflow
