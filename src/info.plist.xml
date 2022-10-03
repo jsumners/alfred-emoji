@@ -390,11 +390,55 @@ osascript -l JavaScript emoji.js "$query" 2&gt;&amp;1</string>
       <integer>180</integer>
     </dict>
   </dict>
-  <key>variables</key>
-  <dict>
-    <key>skin_tone</key>
-    <string></string>
-  </dict>
+  <key>userconfigurationconfig</key>
+  <array>
+    <dict>
+      <key>config</key>
+      <dict>
+        <key>default</key>
+        <string></string>
+        <key>pairs</key>
+        <array>
+          <array>
+            <string>👍</string>
+            <string></string>
+          </array>
+          <array>
+            <string>👍🏻</string>
+            <string>0</string>
+          </array>
+          <array>
+            <string>👍🏼</string>
+            <string>1</string>
+          </array>
+          <array>
+            <string>👍🏽</string>
+            <string>2</string>
+          </array>
+          <array>
+            <string>👍🏾</string>
+            <string>3</string>
+          </array>
+          <array>
+            <string>👍🏿</string>
+            <string>4</string>
+          </array>
+          <array>
+            <string>Random</string>
+            <string>random</string>
+          </array>
+        </array>
+      </dict>
+      <key>description</key>
+      <string></string>
+      <key>label</key>
+      <string>Skin Tone</string>
+      <key>type</key>
+      <string>popupbutton</string>
+      <key>variable</key>
+      <string>skin_tone</string>
+    </dict>
+  </array>
   <key>version</key>
   <string>{{version}}</string>
   <key>webaddress</key>
