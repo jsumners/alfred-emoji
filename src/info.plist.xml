@@ -246,9 +246,7 @@
         <key>runningsubtext</key>
         <string>Loading results...</string>
         <key>script</key>
-        <string>query=$*
-
-osascript -l JavaScript emoji.js "$query" 2&gt;&amp;1</string>
+        <string>osascript -l JavaScript emoji.js "$1" 2&gt;&amp;1</string>
         <key>scriptargtype</key>
         <integer>1</integer>
         <key>scriptfile</key>
