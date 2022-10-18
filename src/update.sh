@@ -3,7 +3,7 @@
 
 # THESE VARIABLES MUST BE SET.
 readonly github_repo='jsumners/alfred-emoji'
-readonly frequency_check='1' # days
+readonly frequency_check=${update_check_frequency:-1} # days
 
 # FROM HERE ON, CODE SHOULD BE LEFT UNTOUCHED!
 readonly info_plist='info.plist'
@@ -15,6 +15,10 @@ function abort {
 
 function notification {
   osascript -e "display notification \"${1}\" with title \"${alfred_workflow_name}\" subtitle \"A new version is available\""
+}
+
+function semver_major_notification {
+  osascript -e "display notification \"${1}\" with title \"${alfred_workflow_name}\" subtitle \"A new major version is available\""
 }
 
 function fetch_remote_version {
@@ -40,6 +44,16 @@ function download_and_install {
 
 # Check for updates
 if [[ $(find "${info_plist}" -mtime +"${frequency_check}"d) ]]; then
+  REMOTE_VERSION=$(fetch_remote_version)
+  CURRENT_MAJOR=$(echo "${alfred_workflow_version}" | cut -d'.' -f1)
+  REMOTE_MAJOR=$(echo "${REMOTE_VERSION}" | cut -d'.' -f1)
+
+  if [[ $(echo "${REMOTE_MAJOR} > ${CURRENT_MAJOR}") -eq 1 ]]; then
+    semver_major_notification "alfred-emoji ${REMOTE_VERSION} is available. You have ${alfred_workflow_version}."
+    touch "${info_plist}"
+    exit 0
+  fi
+
   if [[ "${alfred_workflow_version}" == "$(fetch_remote_version)" ]]; then
     touch "${info_plist}" # Reset timer by touching local file
     exit 0

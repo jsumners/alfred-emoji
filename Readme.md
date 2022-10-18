@@ -70,6 +70,16 @@ new release is found, it automatically downloads and installs the latest
 version of the workflow. All downloads come directly from official [GitHub
 releases][releases].
 
+By default, the update check will occur once per day. You can change the
+interval by setting the `update_check_frequency` environment variable in the
+[workflow environment variables](https://www.alfredapp.com/help/workflows/advanced/variables/#environment).
+The value may be any integer, and it defines the number of days between checks.
+
+If a new major version of the workflow is available, the workflow _will not_ be
+automatically updated. Major versions indicate potentially breaking changes
+or incompatibilities with older Alfred versions. Instead, a notification will
+be shown to remind you to manually update.
+
 ## Optional Hotkey and Snippet Triggers
 
 Trigger the workflow with either a custom hotkey or a custom snippet.
