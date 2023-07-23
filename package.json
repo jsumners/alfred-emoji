@@ -24,7 +24,7 @@
     "snazzy": "^9.0.0",
     "standard": "^17.0.0",
     "tap": "^16.2.0",
-    "unicode-emoji-json": "^0.3.1",
+    "unicode-emoji-json": "^0.5.0",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2"
   }

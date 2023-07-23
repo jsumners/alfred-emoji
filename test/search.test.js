@@ -198,5 +198,6 @@ test('enables ctrl-modifier', (t) => {
 test('pads codepoint with zeroes if needed', (t) => {
   t.plan(1)
   const found = search('5')
-  t.ok(found.items[0].mods.ctrl.arg === 'U+0035')
+  const unicodes = found.items.map((item) => item.mods.ctrl.arg)
+  t.ok(unicodes.includes('U+0035'))
 })
