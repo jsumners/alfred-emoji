@@ -80,6 +80,8 @@ Trigger the workflow with either a custom hotkey or a custom snippet.
 2. `npm install`
 3. `npm run build`
 
+Note: Node.js >= 20 is required.
+
 ## Loading the Workflow into Alfred
 
 1. `npm run load`
