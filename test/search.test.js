@@ -201,3 +201,28 @@ test('pads codepoint with zeroes if needed', (t) => {
   const unicodes = found.items.map((item) => item.mods.ctrl.arg)
   t.assert.ok(unicodes.includes('U+0035'))
 })
+
+test('"crossed" returns reasonable list', (t) => {
+  t.plan(1)
+  const found = search('crossed')
+  const expected = [
+    '😵', '🚫', '🔀', '🤞', '⚔️',
+    '🎌', '🫰'
+  ]
+  const filtered = found.items.map(item => item.arg)
+  t.assert.deepStrictEqual(filtered, expected)
+})
+
+test('"crossed fingers" returns reasonable list', (t) => {
+  t.plan(1)
+  const found = search('crossed fingers')
+  const expected = [
+    '😵', '🚫', '🔀', '🤞', '⚔️',
+    '🎌', '🫰', '🤚', '🖐️', '✋',
+    '🖖', '👌', '✌️', '🤟', '🤘',
+    '👈', '👉', '👆', '🖕', '👇',
+    '☝️', '✊', '👐', '💅', '🤌'
+  ]
+  const filtered = found.items.map(item => item.arg)
+  t.assert.deepStrictEqual(filtered, expected)
+})
