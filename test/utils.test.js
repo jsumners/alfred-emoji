@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tap').test
+const test = require('node:test')
 const {
   getRandomSkinTone,
   NUM_SKIN_TONES
@@ -8,5 +8,5 @@ const {
 
 test(`getRandomSkinTone() generares a number between 0 and ${NUM_SKIN_TONES - 1}`, (t) => {
   t.plan(1)
-  t.ok([0, 1, 2, 3, 4].includes(getRandomSkinTone()))
+  t.assert.ok([0, 1, 2, 3, 4].includes(getRandomSkinTone()))
 })
