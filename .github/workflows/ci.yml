@@ -5,7 +5,8 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
+env:
+  ALFRED_WORKFLOW_FILE: 'alfred-emoji.alfredworkflow'
 jobs:
   macosx:
     runs-on: macos-latest
@@ -17,5 +18,56 @@ jobs:
     - run: ./build.sh
     - uses: actions/upload-artifact@main
       with:
-        name: alfred-emoji.alfredworkflow
-        path: alfred-emoji.alfredworkflow
+        name: ${{ env.ALFRED_WORKFLOW_FILE }}
+        path: ${{ env.ALFRED_WORKFLOW_FILE }}
+    - name: "Determine tag"
+      if: ${{ github.event_name == 'push' }}
+      run: |
+        RELEASE_VERSION=$(./build.sh get_current_version)
+        RELEASE_TAG="v${RELEASE_VERSION}"
+        echo "RELEASE_TAG=${RELEASE_TAG}" >> $GITHUB_ENV
+      shell: bash
+    - name: "Create release"
+      if: ${{ github.event_name == 'push' }}
+      uses: "actions/github-script@v7"
+      with:
+        github-token: "${{ secrets.GITHUB_TOKEN }}"
+        script: |
+          try {
+            const response = await github.rest.repos.createRelease({
+              draft: false,
+              generate_release_notes: true,
+              name: process.env.RELEASE_TAG,
+              owner: context.repo.owner,
+              prerelease: false,
+              repo: context.repo.repo,
+              tag_name: process.env.RELEASE_TAG,
+            });
+
+            core.exportVariable('RELEASE_ID', response.data.id);
+            core.exportVariable('RELEASE_UPLOAD_URL', response.data.upload_url);
+          } catch (error) {
+            core.setFailed(error.message);
+          }
+    - name: "Upload release asset"
+      if: ${{ github.event_name == 'push' }}
+      uses: "actions/github-script@v7"
+      env:
+        RELEASE_ASSET_FILE: ${{ env.ALFRED_WORKFLOW_FILE }}
+        RELEASE_ID: ${{ env.RELEASE_ID }}
+      with:
+        github-token: "${{ secrets.GITHUB_TOKEN }}"
+        script: |
+          try {
+            const fs = require('fs');
+            const response = await github.rest.repos.uploadReleaseAsset({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: process.env.RELEASE_ID,
+              name: process.env.RELEASE_ASSET_FILE,
+              data: await fs.readFileSync(process.env.RELEASE_ASSET_FILE)
+            });
+            core.exportVariable('DOWNLOAD_URL', response.data.browser_download_url);
+          } catch (error) {
+            core.setFailed(error.message);
+          }
