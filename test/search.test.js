@@ -3,6 +3,13 @@
 const test = require('node:test')
 const search = require('../src/search')
 
+test('does not include null results', (t) => {
+  t.plan(1)
+  const found = search('')
+  const filtered = found.items.filter(i => i == null)
+  t.assert.equal(filtered.length, 0)
+})
+
 test('finds "thumbs up"', (t) => {
   t.plan(1)
   const found = search('thumbs up')
