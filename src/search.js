@@ -98,9 +98,25 @@ const alfredItem = (emojiDetails, emojiSymbol) => {
 
 const alfredItems = (chars) => {
   const items = []
-  chars.forEach((char) => {
-    items.push(alfredItem(emojiInfo[char], char))
-  })
+  for (const char of chars) {
+    const item = alfredItem(emojiInfo[char], char)
+    if (item == null) {
+      // If the host system being used to build the workflow has emoji
+      // available that emojilib hasn't incorporated yet, then we will hit
+      // this path. For example, as of 2025-02-14 Unicode 16.0 defines an
+      // emoji "face with bags under eyes" (0x01fae9) that is not present
+      // in the emojilib data. If we add `null` to the search results list,
+      // Alfred will not understand what to do with that result and will not
+      // display any search results for the set that includes the `null` value.
+      // Therefore, we have to omit it.
+      /*
+      const hex = [...char].map(c => c.codePointAt(0).toString(16)).join('')
+      console.log(`${char} (${hex}) is missing`)
+      */
+      continue
+    }
+    items.push(item)
+  }
   return { items }
 }
 
