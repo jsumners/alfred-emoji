@@ -29,10 +29,13 @@ function getSkinTone () {
 
 // JXA: JavaScript for Automation Interface (`osascript -l JavaScript`)
 // Note: In JXA, console.log writes to stderr instead of stdout
+// IMPORTANT: In macOS Tahoe 26.2+, console.log in run() produces NO output
+// The return value is used by emoji-tahoe-fix.sh wrapper: https://github.com/jsumners/alfred-emoji/issues/124
 function run (argv) {
   const query = argv[0]
   const found = search(query, skinTone, pasteByDefault)
-  console.log(JSON.stringify(found))
+  console.log(JSON.stringify(found))  // Doesn't work in Tahoe 26.2+
+  return JSON.stringify(found)         // Return for wrapper script to capture
 }
 
 module.exports = run
