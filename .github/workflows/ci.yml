@@ -8,7 +8,10 @@ on:
 
 jobs:
   macosx:
-    runs-on: macos-latest
+    #runs-on: macos-latest
+    # Marked as generally available https://github.com/actions/runner-images/issues/13739
+    # Bur for some reason not promoted to `-latest`.
+    runs-on: macos-26
     steps:
     - uses: actions/checkout@main
     - uses: actions/setup-node@main
