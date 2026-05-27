@@ -3,7 +3,8 @@
 
 const search = require('./search')
 const { getRandomSkinTone } = require('./utils')
-const pasteByDefault = getenv('snippetapp')
+const returnAction = getenv('return_action')
+const pasteByDefault = getenv('snippetapp') ?? returnAction === 'paste'
 const skinTone = getSkinTone()
 
 function getenv (name) {

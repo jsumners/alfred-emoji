@@ -134,18 +134,37 @@
       <key>config</key>
       <dict>
         <key>inputstring</key>
-        <string>{var:snippetapp}</string>
+        <string>{var:return_action}</string>
         <key>matchcasesensitive</key>
-        <true/>
+        <false/>
         <key>matchmode</key>
-        <integer>1</integer>
+        <integer>0</integer>
         <key>matchstring</key>
-        <string></string>
+        <string>paste</string>
       </dict>
       <key>type</key>
       <string>alfred.workflow.utility.filter</string>
       <key>uid</key>
       <string>7521B349-C1D6-4186-B21E-8EAC41BD18F3</string>
+      <key>version</key>
+      <integer>1</integer>
+    </dict>
+    <dict>
+      <key>config</key>
+      <dict>
+        <key>inputstring</key>
+        <string>{var:return_action}</string>
+        <key>matchcasesensitive</key>
+        <true/>
+        <key>matchmode</key>
+        <integer>1</integer>
+        <key>matchstring</key>
+        <string>copy</string>
+      </dict>
+      <key>type</key>
+      <string>alfred.workflow.utility.filter</string>
+      <key>uid</key>
+      <string>E577A252-59CC-4971-9A6E-90F0C02DC35E</string>
       <key>version</key>
       <integer>1</integer>
     </dict>
@@ -307,9 +326,9 @@
         <key>matchcasesensitive</key>
         <true/>
         <key>matchmode</key>
-        <integer>0</integer>
+        <integer>1</integer>
         <key>matchstring</key>
-        <string></string>
+        <string>paste</string>
       </dict>
       <key>type</key>
       <string>alfred.workflow.utility.filter</string>
@@ -435,6 +454,32 @@
       <string>popupbutton</string>
       <key>variable</key>
       <string>skin_tone</string>
+    </dict>
+    <dict>
+      <key>config</key>
+      <dict>
+        <key>default</key>
+        <string>copy</string>
+        <key>pairs</key>
+        <array>
+          <array>
+            <string>Copy on Return, Paste on CMD+Return</string>
+            <string>copy</string>
+          </array>
+          <array>
+            <string>Paste on Return</string>
+            <string>paste</string>
+          </array>
+        </array>
+      </dict>
+      <key>description</key>
+      <string>Default action when pressing Return</string>
+      <key>label</key>
+      <string>Return Key Action</string>
+      <key>type</key>
+      <string>popupbutton</string>
+      <key>variable</key>
+      <string>return_action</string>
     </dict>
   </array>
   <key>version</key>
